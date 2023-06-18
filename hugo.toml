@@ -53,7 +53,7 @@ disqusShortname = ''
   # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
   # the default value is set to 'auto'.
   # You can take a look at layouts/index.html for more information.
-  description = "..."
+  description = "Another blog about graphics."
   mainSections = ['posts']
   toc = false # set to false to disable table of contents 'globally'
   goToTop = true # set to false to disable 'go to top' button
@@ -66,9 +66,9 @@ disqusShortname = ''
 [params.author]
   avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-  intro = "Guillaume's graphics blog"
+  intro = "Guillaume Boissé"
   name = "Guillaume Boissé"
-  description = "..."
+  description = "I am a graphics programmer at AMD in the Advanced Rendering Research group. This is my page for personal projects!"
 
 # Allow to override webmanifest options
 [params.webmanifest]
