@@ -1,4 +1,5 @@
 ---
+slug: hello-world
 title: Hello, World!
 date: 2023-06-18
 author: Guillaume Boissé
