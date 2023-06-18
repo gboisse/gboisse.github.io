@@ -13,9 +13,8 @@
       <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://gboisse.github.io/pages/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
-https://github.com/yuin/goldmark https://github.</description>
+      <description>My name is Guillaume and I am a graphics programmer at AMD in the Advanced Rendering Research group.
+This site is dedicated to my personal projects however, hope you find it useful!</description>
     </item>
     
   </channel>
