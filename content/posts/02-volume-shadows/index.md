@@ -52,7 +52,11 @@ The idea is pretty straightforward, simply turn the particles into a 3D density 
 
 Sparse grid, etc.
 
-### Traversing the volume
+### Blurring the field
+
+etc.
+
+### Ray marching
 
 blablabla.
 
