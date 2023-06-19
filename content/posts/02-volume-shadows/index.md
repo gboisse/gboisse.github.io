@@ -50,6 +50,20 @@ The idea is pretty straightforward, simply turn the particles into a 3D density 
 
 ### Building the volume
 
+Sparse grid, etc.
+
 ### Traversing the volume
+
+blablabla.
+
+Temporal reprojection, etc.
+
+### Interacting with geometry
+
+Shadow mask, patching, etc.
+
+### Conclusion
+
+I still haven't blablabla.
 
 </div>
