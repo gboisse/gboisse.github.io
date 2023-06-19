@@ -28,9 +28,9 @@ the depth pre-pass does indeed help the generation of the initial layer but you 
 
 You also have to re-generate the structure for every light source in the scene, very much like regular shadow maps, which can end up being fairly expensive depending on the scene setup.
 Furthermore, how would you go on to support light sources such as area lights and skylights?
-Just like shadow maps, deep opacity maps aren't really amenable to soft shadows nor illumination coming from all possible directions.
+Just like shadow maps, deep opacity maps aren't really amenable to soft shadows nor illumination coming from all possible directions...
 
-Another solution seemed required... <!-- :confused_face: -->
+Another solution seemed required. <!-- :confused_face: -->
 
 ### Particle volumes
 
