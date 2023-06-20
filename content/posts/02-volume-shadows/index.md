@@ -62,7 +62,7 @@ blablabla.
 
 Temporal reprojection, etc.
 
-### Interacting with geometry
+### Interaction with geometry
 
 Shadow mask, patching, etc.
 
