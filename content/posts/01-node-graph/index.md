@@ -23,6 +23,12 @@ As a teaser, here's a screenshot of the tool running our Revision 2023 demo:
 
 <!-- If you're interested in knowing how to achieve this using Dear ImGui, then keep reading :winking_face: -->
 
+### Setup
+
+When I started thinking about this system back in 2019, I was wondering how to produce a system that would be both simple to code yet expressive enough that it could lead to creating interesting visuals.
+
+One day I stumbled upon a solution that I thought could be interesting...
+
 ### Data model vs. GUI code
 
 discuss about "database" approach...
