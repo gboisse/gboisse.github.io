@@ -9,7 +9,7 @@ draft: true
 
 <div style="text-align: justify">
 
-I wanted my first post to be about the node graph system that I created for my personal graphics engine called "RogueEngine".
+I wanted my first post on this blog to be about the node graph system that I created for my personal graphics engine called "RogueEngine".
 I may talk about the engine itself in another post but for now I'd like to focus on its UI. <!-- :grinning_face_with_big_eyes: -->
 
 As a teaser, here's a screenshot of the tool running our Revision 2023 demo:

@@ -10,7 +10,7 @@ draft: true
 <div style="text-align: justify">
 
 When working on my particle system, I really wanted to have good lighting.
-There are many ways to shade particles, such as projecting an image onto them, using their distance to other shapes, etc.
+There are many ways to shade particles, such as projecting an image onto them, using their distance to some other shape, etc.
 But proper lighting is the one way in my opinion to get the particles to look really good.
 
 One possible solution for this is a technique called [deep opacity maps](http://www.cemyuksel.com/research/deepopacity/), so that was my first line of attack:
@@ -19,7 +19,7 @@ One possible solution for this is a technique called [deep opacity maps](http://
 
 <img src="/hashed-deep-opacity-map-00.jpg" width="49%" />
 <img src="/hashed-deep-opacity-map-01.jpg" width="49%" />
-<em>Some test renders with and without hashed deep opacity maps.</em>
+<em>Test renders with and without hashed deep opacity maps.</em>
 
 </div>
 <br/>
@@ -34,7 +34,7 @@ Another solution seemed required. <!-- :confused_face: -->
 
 ### Particle volumes
 
-Thinking about this a bit more, I realised that it'd be more interesting to create a single structure over the particles that I could somehow build once and re-use for every light in the scene.
+Thinking about this a bit more, I realised that it'd be possibly more interesting to create a single structure over the particles that I could somehow build once and re-use for every light in the scene.
 Enters the "particle volume". :slightly_smiling_face:
 
 <div style="text-align: center;">
@@ -46,7 +46,7 @@ Enters the "particle volume". :slightly_smiling_face:
 
 </div>
 <br/>
-The idea is pretty straightforward, simply turn the particles into a 3D density field that we then use to raymarch towards the light just as we would in a regular raytracer.
+The idea is pretty straightforward, simply turn the particles into a 3D density field that we then use to raymarch towards the light just as you would in a regular raytracer.
 
 ### Building the volume
 
