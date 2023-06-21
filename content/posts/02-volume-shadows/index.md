@@ -47,6 +47,7 @@ Enters the "particle volume". :slightly_smiling_face:
 </div>
 <br/>
 The idea is pretty straightforward, simply turn the particles into a 3D density field that we then use to raymarch towards the light just as you would in a regular raytracer.
+The question is how to do this efficiently and entirely on the GPU...
 
 ### Building the volume
 
