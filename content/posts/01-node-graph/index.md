@@ -30,7 +30,7 @@ I really wanted to be able to team up with artists and designers, so it seemed t
 What wasn't so obvious to me however was what kind of interface I should go with...
 
 I was not particularly fond of node graphs initially for two reasons:
-- Many of these systems are really "coding with nodes"; so you still get the complexity of coding only more inconvenient.
+- Many of these systems are really "coding with nodes"; so you still get the complexity of programming only more inconvenient.
 - It can get real messy real fast.
 
 <!--
@@ -46,7 +46,7 @@ I tend to see many node graph systems as coding, but with nodes, often resulting
 </div>
 <br/>
 Node systems were still appealing to me however for different reasons;
-they can be more intuitive and less intimidating than text-based coding and they tend to look better on screenshots.
+they can be more intuitive and less intimidating than text-based programming and they tend to look better on screenshots.
 Then maybe it'll be easier for me to convince artists to get on board? :slightly_smiling_face:
 
 <!--
