@@ -30,7 +30,7 @@ I really wanted to be able to team up with artists and designers, so it seemed t
 What wasn't so obvious to me however was what kind of interface I should go with...
 
 I was not particularly fond of node graphs initially for two reasons:
-- Many of these systems are really "coding with nodes"; so you still get the complexity of coding although with a clunkier interface.
+- Many of these systems are really "coding with nodes"; so you still get the complexity of coding only more inconvenient.
 - It can get real messy real fast.
 
 <!--
@@ -45,9 +45,15 @@ I tend to see many node graph systems as coding, but with nodes, often resulting
 
 </div>
 <br/>
-Such systems do present some appealing aspects though;<!-- they seem generally more user friendly and blablabla-->
+Node systems were still appealing to me however for different reasons;
+they can be more intuitive and less intimidating than text-based coding and they tend to look better on screenshots.
+Then maybe it'll be easier for me to convince artists to get on board? :slightly_smiling_face:
+
+<!--
+Such systems do present some appealing aspects though;
 if well made, they can be far more intuitive than a text-based coding system making them less intimidating to get started with.
 Then maybe it'll be easier for me to convince artists to get on board? :slightly_smiling_face:
+-->
 
 So I started thinking about a node system that would <b>not</b> be "coding with nodes".
 
@@ -58,7 +64,7 @@ I wanted to make sure my node system would <b>not</b> be a visual coding one.
 
 ### Data oriented nodes
 
-
+Here's the basic idea blabla
 
 <!--
 ### Setup
@@ -84,4 +90,15 @@ etc.
 
 ### Code nodes
 
-blablabla.
+The system still makes it possible to use code for these moments where built-in nodes aren't quite enough.
+Instead of "coding with nodes" however, here you'd simply create a "code node" letting you type (GLSL) code inside a text field (or copy/paste from [Shadertoy](https://www.shadertoy.com/)...).
+You can then add "bindings" to create tweakable properties that can be accessed directly from the code.
+
+<div style="text-align: center;">
+
+![code-node](/code-node.gif)
+*Code node with animated binding.*
+
+</div>
+<br/>
+Oh, and these properties are just like any other node property, so they can be animated and/or plugged into other nodes... :slightly_smiling_face:
