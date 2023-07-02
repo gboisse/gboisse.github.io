@@ -18,7 +18,7 @@ One possible solution for this is a technique called [deep opacity maps](http://
 <div style="text-align: center;">
 
 <img src="/hashed-deep-opacity-map-00.jpg" width="49%" />
-<img src="/hashed-deep-opacity-map-01.jpg" width="49%" />
+<img src="/hashed-deep-opacity-map-01.jpg" width="49%" /><br/>
 <em>Test renders with and without hashed deep opacity maps.</em>
 
 </div>
@@ -41,7 +41,7 @@ Enters the "particle volume". :slightly_smiling_face:
 
 <img src="/particle-volume-00.jpg" width="32%" />
 <img src="/particle-volume-01.jpg" width="32%" />
-<img src="/particle-volume-02.jpg" width="32%" />
+<img src="/particle-volume-02.jpg" width="32%" /><br/>
 <em>From left to right: no lighting, particle volume, shaded particles.</em>
 
 </div>

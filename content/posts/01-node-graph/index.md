@@ -16,7 +16,7 @@ As a teaser, here's a screenshot of the tool running our Revision 2023 demo:
 
 <div style="text-align: center;">
 
-![node-graph](/node-graph.jpg)
+![node-graph](/node-graph.jpg)<br/>
 *Intro sequence from [Reality Check](https://www.pouet.net/prod.php?which=94177).*
 
 </div>
@@ -40,7 +40,7 @@ I tend to see many node graph systems as coding, but with nodes, often resulting
 
 <div style="text-align: center;">
 
-![blueprint-from-hell](/blueprint-from-hell.png)
+![blueprint-from-hell](/blueprint-from-hell.png)<br/>
 *Courtesy of [blueprints from hell](https://blueprintsfromhell.tumblr.com/).*
 
 </div>
@@ -63,6 +63,24 @@ I wanted to make sure my node system would <b>not</b> be a visual coding one.
 -->
 
 ### Data oriented nodes
+
+Having little experience of node-based systems, I first started to explore programs such as [Blender](https://www.blender.org/), [Notch](https://www.notch.one/), [Godot](https://godotengine.org/), etc.
+I was especially wondering how to create a system that would allow to create interesting effects that I would not necessarily have thought about rather than a list of effects users could "tick" on and off.
+
+Some kind of eureka moment.
+I'd have two types of nodes (okay, three):
+- The "root node" from which the graph traversal starts at runtime.
+- The "data node" representing an inert piece of data of a given type.
+- The "component node" that can be attached to a data node to modify its state. <!--(an effect if you will).-->
+
+<div style="text-align: center;">
+
+![node-types](/node-types.png)<br/>
+*The available node types.*
+
+</div>
+<br/>
+For instance, in the "geometry" category, a data node is nothing more than an index and a vertex buffer (plus some bounding box and other things...) while a component node would be some kind of vertex shader that can be applied for displacement purposes.
 
 Here's the basic idea blabla
 
@@ -96,9 +114,9 @@ You can then add "bindings" to create tweakable properties that can be accessed 
 
 <div style="text-align: center;">
 
-![code-node](/code-node.gif)
+![code-node](/code-node.gif)<br/>
 *Code node with animated binding.*
 
 </div>
 <br/>
-Oh, and these properties are just like any other node property, so they can be animated and/or plugged into other nodes... :slightly_smiling_face:
+Oh, and these properties are just like any other node property, so they too can be animated and/or plugged into other nodes... :slightly_smiling_face:
