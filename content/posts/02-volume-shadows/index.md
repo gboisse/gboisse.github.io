@@ -55,6 +55,16 @@ Sparse grid, etc.
 
 ### Blurring the field
 
+blablabla
+
+<div style="text-align: center;">
+
+<img src="/lighting-blur-00.jpg" width="49%" />
+<img src="/lighting-blur-01.jpg" width="49%" /><br/>
+<em>With and without blurring the density field.</em>
+
+</div>
+<br/>
 etc.
 
 ### Ray marching
