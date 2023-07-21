@@ -92,27 +92,26 @@ The main insight to take away in my opinion is the need to separate the data (wh
 Having such clean separation naturally implies creating an interface for iterating the data that can be used both by the runtime when playing back the demo content, and the ImGui code when running inside the editor.
 It also makes it fairly straightforward to implement features such as undo/redo (more on that later...). :slightly_smiling_face:
 
-Our first step should be therefore to define that data model:
+Our first step should therefore be to define that data model:
 
 <div style="text-align: center;">
 
 ![data-mode](/data-model.png)<br/>
 
-*Data model for RogueEngine's node system.*
+*Data model for RogueEngine runtime.*
 
 </div>
 
 \
 There are essentially only 3 types of resources that the user can interact with through the interface:
 - **Assets**: 3D models, texures, music files, etc.
-- **Layers**: These represent a group of nodes.
+- **Layers**: These represent groups of nodes.
 - **Nodes**: Nodes belong to their parent layer.
 
 So the data model is really pretty straightforward.
 When it comes to **assets** and **layers**, their properties are fixed (a name, a path to the file in the case of an asset and some unique ID) so serializing and deserializing the information for loading and saving purposes and/or editing their properties with ImGui is trivial.
 
-Node properties are a bit more complex however:
-
+Nodes are a bit more complex however as their properties blablabla.
 
 <!--
 discuss about "database" approach...
