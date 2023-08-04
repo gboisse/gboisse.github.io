@@ -132,14 +132,30 @@ For the most part however, reflective programming isn't required and we can simp
 
 <div style="text-align: center;">
 
-![serialization](/serialization.png)<br/>
+{{< highlight cpp >}}
+class Project
+{
+public:
+    Project();
 
-*Serialization and deserialization methods for a project.*
+    Result storeToArchive(Archive &archive);
+    Result loadFromArchive(const Archive &archive);
+
+private:
+    SparseArray<Asset> assets;
+    SparseArray<Layer> layers;
+    SparseArray<Node> nodes;
+};
+{{< / highlight >}}
+*Project serialization/deserialization API.*
 
 </div>
 
 \
 Note the **Archive** type blablabla...
+
+The **SparseArray** container isn't too important and could be replaced with other data structures; in short, it's an array of stable keys, which storage is maintained compacted over the addition and deletion of objects.
+You can find an example implementation over [here](https://github.com/gboisse/gfx/blob/43e47de5ff0a46f277e15d92f8c3f9ec4bd65763/gfx_core.h#L257-L500).
 
 <!--
 discuss about "database" approach...
