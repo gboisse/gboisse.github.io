@@ -56,9 +56,9 @@ This meant that the graph should be fairly expressive somehow.
 
 Towards the end of 2019, I had somewhat of a eureka moment.
 I'd design the system to have only two types of nodes (okay, three) and they'd work like this:
-- The "root node" from which the graph traversal would start at runtime.
-- The "data node" representing an inert piece of data of a given type.
-- The "component node" that can be attached to a data node to modify its state.
+- The **root node** from which the graph traversal would start at runtime.
+- The **data node** representing an inert piece of data of a given type.
+- The **component node** that can be attached to a data node to modify its state.
 
 <div style="text-align: center;">
 
@@ -68,9 +68,9 @@ I'd design the system to have only two types of nodes (okay, three) and they'd w
 </div>
 
 \
-For instance, in the "geometry" category, a data node would be nothing more than an index and a vertex buffer (plus some bounding box and probably other things...) while a component node would be some kind of vertex shader that could be connected to it for displacement purposes.
+For instance, in the **geometry** category, a data node would be nothing more than an index and a vertex buffer (plus some bounding box and probably other things...) while a component node would be some kind of vertex shader that could be connected to it for displacement purposes.
 
-Similarly, in the "shading" category, the data node would be a material while a component node would be a piece of fragment shader that could be applied for procedural shading operations.
+Similarly, in the **shading** category, the data node would be a material while a component node would be a piece of fragment shader that could be applied for procedural shading operations.
 
 <div style="text-align: center;">
 
