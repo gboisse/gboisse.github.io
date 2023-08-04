@@ -24,8 +24,9 @@ As a teaser, here's a screenshot of the tool running our Revision 2023 demo:
 ### A bit of background
 
 I started thinking about this project back in 2019 with the aim of releasing some PC demo productions.
-I really wanted to be able to team up with artists and designers, or at least people with skills complementary to mine, so it made sense to invest in an interface that everybody could use regardless of programming knowledge.
+I really wanted to be able to team up with artists and designers (or at least people with skills complementary to mine) so having an interface that everybody could use regardless of programming knowledge seemed to make sense.
 What wasn't so obvious to me however was what kind of interface I should go for...
+<!--it seemed to made sense to invest in an interface that everybody could use regardless of programming knowledge.-->
 
 I was not particularly fond of node graphs initially for two reasons:
 - Many of these systems are really what I'd call "coding with nodes"; so you still get the complexity of programming only more inconvenient.
@@ -45,15 +46,17 @@ Then maybe it'll be easier for me to convince artists to get on board? :slightly
 
 So I started thinking about a node system that would **not** be "coding with nodes".
 
-### Data-oriented nodes
+### Node system
 
 I had little to no experience with node-based systems when starting, so I naturally went and look at other pieces of software for inspiration.
-Big sources of inspiration would be products such as [Blender](https://www.blender.org/), [Notch](https://www.notch.one/) and [Godot](https://godotengine.org/).
-I was especially wondering how to create a system that would allow for composing scenes blablabla creating interesting and emergent effects, that is .... This meant that the graph should be fairly expressive somehow.
+Big sources of inspiration for me would be software such as [Blender](https://www.blender.org/), [Notch](https://www.notch.one/) and [Godot](https://godotengine.org/).
+In particular, I was wondering how to create a system that'd allow for some amount of creativity as opposed to ticking available engine features on or off.
+This meant that the graph should be fairly expressive somehow.
+<!--would allow for composing scenes blablabla creating interesting and emergent effects, that is ....-->
 
-Towards the end of 2019, I had a bit of a eureka moment.
-I'd have only two types of nodes in my system (okay, three) and they'd work like this:
-- The "root node" from which the graph traversal starts at runtime.
+Towards the end of 2019, I had somewhat of a eureka moment.
+I'd design the system to have only two types of nodes (okay, three) and they'd work like this:
+- The "root node" from which the graph traversal would start at runtime.
 - The "data node" representing an inert piece of data of a given type.
 - The "component node" that can be attached to a data node to modify its state.
 
@@ -79,20 +82,20 @@ Similarly, in the "shading" category, the data node would be a material while a 
 \
 The great thing about this approach is that the dependent nodes do not need to know how the data from the data node came to be (in the case of the geometry category, it could be a procedurally-generated mesh, some geometry loaded from a [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) file, or some metaballs generated from a particle system), the format of the data node being fixed, we therefore always know how to operate on it. :slightly_smiling_face:
 
+This allows for all kinds of connections between the different nodes and features as well as creating effects combining different kinds of primitives (geometry, particles, etc.), which would allow hopefully for more advanced and interesting visuals.
+<!--In this sense, this is a "data-oriented" node design.-->
 <!--This allows for conecting nodes in all kinds of way therefore achieving a high degree of expression and flexibility in creating the scene content.-->
-In this sense, this really is a "data-oriented" node design.
 
 ### Data model vs. GUI code
 
 Now that I knew how my node system would operate, I had to find how to implement it.
-My plan was to use [Dear ImGui](https://github.com/ocornut/imgui) for the UI because it's great and, I have to admit, I had little intention of investigating other GUI solutions.
+My plan was to use [Dear ImGui](https://github.com/ocornut/imgui) for the UI because it's a joy to use and, I have to admit, I had little intention of investigating other GUI solutions. ImGui is actually a great fit I found to creating such a creative UI system, and here's how I tackled it.
 
-ImGui is actually a great fit I found to creating such a creative UI system, and here's how I tackled the problem.
 The main insight to take away in my opinion is the need to separate the data (what I'd call the **data model**) from the UI logic and code (often referred to as the **[view](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)**).
-Having such clean separation naturally implies creating an interface for iterating the data that can be used both by the runtime when playing back the demo content, and the ImGui code when running inside the editor.
-It also makes it fairly straightforward to implement features such as undo/redo (more on that later...). :slightly_smiling_face:
+Having such separation naturally implies creating an interface for iterating the data inside your "project" that can then be used both by the runtime, when playing back the demo content, and the ImGui code, when running the editor.
+<!--It also makes it fairly straightforward to implement features such as undo/redo (more on this later...). :slightly_smiling_face:-->
 
-Our first step should therefore be to define that data model:
+Our first step should therefore be to define that data model, so here it is:
 
 <div style="text-align: center;">
 
@@ -103,15 +106,40 @@ Our first step should therefore be to define that data model:
 </div>
 
 \
-There are essentially only 3 types of resources that the user can interact with through the interface:
+There are essentially only 3 types of resources that the user can interact with through the interface and manipulate in a project:
 - **Assets**: 3D models, texures, music files, etc.
 - **Layers**: These represent groups of nodes.
 - **Nodes**: Nodes belong to their parent layer.
 
-So the data model is really pretty straightforward.
+**Ranges** represent the series of *[start, end]* segments for when a particular resource is active on the timeline, while **Properties** represent, as the name suggests, the properties of a given node such as values, colors, links to assets and/or other nodes, etc.
+<!--This is arguably the most complex ...-->
+
+<!--So the data model is really pretty straightforward.
 When it comes to **assets** and **layers**, their properties are fixed (a name, a path to the file in the case of an asset and some unique ID) so serializing and deserializing the information for loading and saving purposes and/or editing their properties with ImGui is trivial.
 
-Nodes are a bit more complex however as their properties blablabla.
+Nodes are a bit more complex however as their properties blablabla.-->
+
+### Serialization
+
+One of the first things you'd need to implement setting up a system like this, is the ability to save and load project files.
+In more technical terms, this means you'd need to be able to serialize the state of the project so it can be written it to disk for instance (saving), as well as deserializing some data blob into a functional runtime state (loading).
+
+[Reflection](https://en.wikipedia.org/wiki/Reflective_programming) is often used to implement serialization and deserialization.
+But do we really need it here?
+Lookking at the data model presented above, most of our tables are fairly static.
+The only exception would be the node's **properties**, which can indeed vary from node type to node type.
+For the most part however, reflective programming isn't required and we can simply write some serialize and deserialization functions for an **Asset**, a **Layer**, and most of a **Node** and this already takes us 90% of the way. :slightly_smiling_face:
+
+<div style="text-align: center;">
+
+![serialization](/serialization.png)<br/>
+
+*Serialization and deserialization methods for a project.*
+
+</div>
+
+\
+Note the **Archive** type blablabla...
 
 <!--
 discuss about "database" approach...
