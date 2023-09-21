@@ -77,6 +77,14 @@ Temporal reprojection, etc.
 
 Shadow mask, patching, etc.
 
+<div style="text-align: center;">
+
+![hairy-teapot](/hairy-teapot.jpg)\
+*Behold the hairy teapot!*
+
+</div>
+
+
 ### Conclusion
 
 I still haven't blablabla.

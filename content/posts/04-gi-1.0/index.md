@@ -1,9 +1,9 @@
 ---
 slug: gi-1.0
 title: Integrating GI-1.0 into a forward renderer
-date: 2023-06-21
+date: 2023-06-22
 author: Guillaume Boissé
-description: How to render real-time high quality volume shadows for particles.
+description: Case study of integrating a dynamic global illumination pipeline into a forward renderer.
 draft: true
 ---
 

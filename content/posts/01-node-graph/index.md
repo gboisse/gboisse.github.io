@@ -119,7 +119,7 @@ When it comes to **assets** and **layers**, their properties are fixed (a name, 
 
 Nodes are a bit more complex however as their properties blablabla.-->
 
-### Serialization
+### Saving a project
 
 One of the first things you'd need to implement setting up a system like this, is the ability to save and load project files.
 In more technical terms, this means you'd need to be able to serialize the state of the project so it can be written it to disk for instance (saving), as well as deserializing some data blob into a functional runtime state (loading).
