@@ -91,8 +91,8 @@ The great thing about this approach is that the dependent nodes do not need to k
 
 <div style="text-align: center;">
 
-![metaballs](/metaballs.png)
-*Metaballs created using the nodes, a classic of the demoscene.*
+<img src="/metaballs.jpg" width="80%" /><br/>
+<em>Metaballs created using the nodes, a classic of the demoscene.</em>
 
 </div>
 
