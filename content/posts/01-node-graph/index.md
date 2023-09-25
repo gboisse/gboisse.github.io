@@ -132,7 +132,7 @@ Furthermore blablabla.
 
 ![timeline](/timeline.jpg)
 
-*The timeline panel allows the edition of ranges, i.e., when is a node or layer enabled.*
+*The timeline panel allows the edition of ranges, i.e., when is a node or layer active.*
 
 </div>
 
