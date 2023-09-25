@@ -91,7 +91,8 @@ The great thing about this approach is that the dependent nodes do not need to k
 
 <div style="text-align: center;">
 
-<img src="/metaballs.jpg" width="80%" /><br/>
+<img src="/metaballs-nodes.png" width="49%" />
+<img src="/metaballs.jpg" width="49%" /><br/>
 <em>Metaballs created using the nodes, a classic of the demoscene.</em>
 
 </div>
