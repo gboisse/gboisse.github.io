@@ -166,4 +166,4 @@ Oh, and these properties are just like any other node property, so they too can 
 
 ### Conclusion
 
-I hope this overview was useful, don't hesitate to [reach out](https://twitter.com/guitio2002) or comment!
+I hope this overview was useful, don't hesitate to [reach out](https://twitter.com/guitio2002) or leave a comment!
