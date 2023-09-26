@@ -33,7 +33,6 @@ Regardless, I started looking into interfaces for visual content creation, which
 
 I was initially not particularly fond of node graphs however, for mainly two reasons:
 - Many of these systems seemed to be what I'd call "coding with nodes"; while it may be more visual, it isn't fundamentally any simpler.
-<!--so you still get the complexity of programming only more inconvenient.-->
 - It can get real messy real fast.
 
 <div style="text-align: center;">
