@@ -117,7 +117,7 @@ Our first step should therefore be to define that data model, so here it is:
 </div>
 
 \
-There are essentially only three types of resources that a user can interact with through the interface and manipulate within a project (okay, there's a few more, as detailed below...):
+There are essentially only three types of resources that a user can interact with through the interface and manipulate within a project (along with a few more as detailed below...):
 - **Assets**: All your imported 3D models, textures, music files, etc.
 - **Layers**: These allow to group nodes, mostly to facilitate multi-scene projects.
 - **Nodes**: Nodes belong to their parent layer and can be executed by the runtime.
@@ -126,7 +126,7 @@ You may notice more blablabla.
 
 Furthermore blablabla.
 
-**Ranges** represent the series of *[start, end]* segments for when a particular resource is active on the timeline, while **Properties** represent, as the name suggests, the properties of a given node such as values, colors, links to assets and/or other nodes, etc.
+**Ranges** represent the series of time segments for when a particular resource is active on the timeline, while **Properties** represent, as the name suggests, the properties of a given node such as values and colors, links to assets and/or other nodes, etc.
 
 <div style="text-align: center;">
 
