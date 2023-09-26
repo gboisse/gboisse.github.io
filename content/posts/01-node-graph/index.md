@@ -148,8 +148,10 @@ etc.
 
 ### Code nodes
 
+Going back to my earlier comment on many node systems being about "coding with nodes", I feel that the approach presented here manages to propose an alternative solution, blablabla
+
 The system still makes it possible to use code for these moments where built-in nodes aren't quite enough.
-Instead of "coding with nodes" however, here you'd simply create a "code node" letting you type (GLSL) code inside a text field (or copy/paste from [Shadertoy](https://www.shadertoy.com/)...).
+Instead of "coding with nodes" however, here you'd simply create a "code node" letting you actual code inside a text field (or copy/paste from [Shadertoy](https://www.shadertoy.com/)...).
 You can then add "bindings" to create tweakable properties that can be accessed directly from the code.
 
 <div style="text-align: center;">
