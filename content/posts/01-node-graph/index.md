@@ -32,7 +32,8 @@ This translated in my mind to having an interface that anyone could use for inte
 Regardless, I started looking into interfaces for visual content creation, which were at the time both quite fascinating and mysterious to me having little to no experience with such systems.
 
 I was initially not particularly fond of node graphs however, for mainly two reasons:
-- Many of these systems seemed to be what I'd call "coding with nodes"; so you still get the complexity of programming only more inconvenient.
+- Many of these systems seemed to be what I'd call "coding with nodes"; while it may be more visual, it isn't fundamentally any simpler.
+<!--so you still get the complexity of programming only more inconvenient.-->
 - It can get real messy real fast.
 
 <div style="text-align: center;">
@@ -73,7 +74,7 @@ This seemingly simple setup seemed to open up a lot of possibilities. :slightly_
 
 I could have some "geometry data node" being nothing more than an index and a vertex buffer (plus some bounding box and probably other things...) while a "component node" connected to it would act as some kind of vertex shader that could be used for displacement purposes.
 
-Similarly, a "shading data node" would represent a standard material while a "component node" would be some piece of code to be injected into the fragment shader for various per-pixel procedural shading operations.
+Similarly, a "shading data node" would represent a standard material while a "component node" would be some piece of code to be injected into the fragment shader for various per-pixel procedural shading effects.
 
 With such an approach, I felt I'd be able to expose all engine features in a way that they could easily be composed in different ways and hopefully achieve my goals of blablabla.
 Here's a collection of the different node categories in the engine at the time of writing:
