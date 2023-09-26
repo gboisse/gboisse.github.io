@@ -52,7 +52,7 @@ So I started thinking about a node system that would **not** be "coding with nod
 ### Node system
 
 Having little to no experience with node-based systems, I went ahead and looked at other software for inspiration.
-Big sources of inspiration for me would be software such as [Blender](https://www.blender.org/), [Notch](https://www.notch.one/) and [Godot](https://godotengine.org/).
+Big sources of inspiration for me would be software such as [Blender](https://www.blender.org/), [Notch](https://www.notch.one/), and [Godot](https://godotengine.org/).
 In particular, I was wondering how to create a system that'd be both easy to use and expressive enough to allow the creation of interesting and emergent effects rather than simply ticking available engine features on or off...
 
 Towards the end of 2019, something somewhat cliked in my mind;
@@ -75,6 +75,7 @@ I could have some "geometry data node" being nothing more than an index and a ve
 
 Similarly, a "shading data node" would represent a standard material while a "component node" would be some piece of code to be injected into the fragment shader for various per-pixel procedural shading operations.
 
+With such an approach, I felt I'd be able to expose all engine features in a way that they could easily be composed in different ways and hopefully achieve my goals of blablabla.
 Here's a collection of the different node categories in the engine at the time of writing:
 
 <!--Mention something about the color scheme?-->
@@ -101,12 +102,12 @@ The great thing about this approach is that the dependent nodes do not need to k
 
 Now that I knew how my node system would operate, I had to find how to implement it.
 My plan was to use [Dear ImGui](https://github.com/ocornut/imgui) for the UI because it's a joy to use and, I have to admit, I had little intention of investigating other GUI solutions.
-ImGui is actually a great fit I found to creating such a creative UI system, and here's how I tackled it.
+ImGui is actually a great fit I found to creating such a creative UI system.<!--, and here's how I tackled it.-->
 
 The main insight to take away in my opinion is the need to separate the data (what I'd call the **data model**) from the UI logic (often referred to as the **[view](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)**).
 Having such a separation naturally implies creating an interface for iterating the data inside your "project" that can then be used both by the runtime, when playing back the demo content, and the ImGui code, when running the editor.
 
-Our first step should therefore be to define that data model, so here it is:
+Our first step should therefore be to define that data model, so here goes:
 
 <div style="text-align: center;">
 
@@ -118,7 +119,7 @@ Our first step should therefore be to define that data model, so here it is:
 
 \
 There are essentially only three types of resources that a user can interact with through the interface and manipulate within a project (along with a few more as detailed below...):
-- **Assets**: All your imported 3D models, textures, music files, etc.
+- **Assets**: A list of all your imported 3D models, textures, music files, etc.
 - **Layers**: These allow to group nodes, mostly to facilitate multi-scene projects.
 - **Nodes**: Nodes belong to their parent layer and can be executed by the runtime.
 
@@ -132,7 +133,7 @@ Furthermore blablabla.
 
 ![timeline](/timeline.jpg)
 
-*The timeline panel allows the edition of ranges, i.e., when is a node or layer active.*
+*The timeline panel allows the edition of ranges, i.e., when is a node or layer active or not.*
 
 </div>
 
@@ -148,11 +149,11 @@ etc.
 
 ### Code nodes
 
-Going back to my earlier comment on many node systems being about "coding with nodes", I feel that the approach presented here manages to propose an alternative solution, blablabla
+Going back to my earlier comment on many node systems being more like "coding with nodes", I feel that the approach presented here manages to propose an alternative solution, blablabla
 
 The system still makes it possible to use code for these moments where built-in nodes aren't quite enough.
-Instead of "coding with nodes" however, here you'd simply create a "code node" letting you actual code inside a text field (or copy/paste from [Shadertoy](https://www.shadertoy.com/)...).
-You can then add "bindings" to create tweakable properties that can be accessed directly from the code.
+Instead of "coding with nodes" however, here you'd simply create a "code node" letting you write actual code inside a text field (or copy/pasted from [Shadertoy](https://www.shadertoy.com/)...).
+You can then add "bindings" to create tweakable properties that can be accessed directly from the shader.
 
 <div style="text-align: center;">
 
