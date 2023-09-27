@@ -121,7 +121,7 @@ There are essentially only three types of resources that a user can interact wit
 - **Layers**: These allow to group nodes, mostly to facilitate multi-scene projects.
 - **Nodes**: Nodes belong to their parent layer and can be executed by the runtime.
 
-Furthermore, **Ranges** represent the series of time segments for when a particular resource is active on the timeline, while **Properties** represent, as the name suggests, the properties of a given node such as values and colors, links to assets and/or other nodes, etc.
+Furthermore, **Ranges** represent the series of time segments for when a particular resource is active on the timeline, while **Properties** represent, as the name suggests, the properties of a given node, such as values and colors, links to assets and/or other nodes, etc.
 
 Having such a clearly defined data model makes it easy to serialize and deserialize the content of a project for saving and loading purposes as we can rely on a well identified separation between what should be persisted vs. what's engine specific.
 
