@@ -75,8 +75,7 @@ I could have some "geometry data node" being nothing more than an index and a ve
 
 Similarly, a "shading data node" could represent a standard material while a "component node" would be some piece of code to be injected into the fragment shader for various per-pixel procedural shading effects.
 
-This felt like a good solution; I could instantly see how most features could map to this setup.
-It also most definitely wasn't a visual programming system...
+This felt like a good solution; I could instantly see how most features could map to this setup and it most definitely wasn't a visual programming system...
 As an illustration, here's a collection of the different node categories available in the engine at the time of writing:
 
 <div style="text-align: center;">
