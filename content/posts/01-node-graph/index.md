@@ -123,7 +123,7 @@ There are essentially only three types of resources that a user can interact wit
 
 Furthermore, **Ranges** represent the series of time segments for when a particular resource is active on the timeline, while **Properties** represent, as the name suggests, the properties of a given node, such as values and colors, links to assets and/or other nodes, etc.
 
-Having such a clearly defined data model makes it easy to serialize and deserialize the content of a project for saving and loading purposes as we can rely on a well identified separation between what should be persisted vs. what's engine specific.
+Having such a clearly defined data model makes it easy to serialize and deserialize the content of a project (for saving and loading purposes respectively) as we can rely on a well identified separation between what should be persisted vs. what's engine specific.
 
 <div style="text-align: center;">
 
@@ -136,7 +136,7 @@ Having such a clearly defined data model makes it easy to serialize and deserial
 \
 Finally, such a setup makes it rather simple to implement dreaded (but oh so useful!) features such as undo/redo.
 I picked the same approach than [@voxagonlabs](https://blog.voxagon.se/2018/07/10/undo-for-lazy-programmers.html) and went ahead with serializing the whole project on every change to the data model.
-This may sound rather inefficient (and I'm sure it won't hold up past certain project sizes...) but there isn't really all that much data we typically have to serialize when saving a project.
+This may sound rather inefficient (and I'm sure it won't hold up past certain project sizes...) but there isn't really all that much data you typically have to serialize when saving a project.
 So it's definitely good enough for now and makes undo/redo indeed trivial to manage. :slightly_smiling_face:
 
 ### Animating the scene
