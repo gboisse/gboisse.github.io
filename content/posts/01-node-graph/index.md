@@ -1,10 +1,9 @@
 ---
 slug: node-graph
 title: Visual node graph with ImGui
-date: 2023-06-19
+date: 2023-09-29
 author: Guillaume Boissé
-description: How to use Dear ImGui for creating a visual node graph.
-draft: true
+description: Using Dear ImGui for creating a visual node graph.
 ---
 
 <div style="text-align: justify">
@@ -143,7 +142,7 @@ Next stop on the road was to get things moving.
 
 My plan here was to allow keyframing any property that's either a `float` or a vector of floats (e.g., `vec2`, `vec3`, `vec4`).
 For this task, I pretty much mimicked Blender and added a "K" button next to all keyframe-able properties.
-Once enabled, the property field would turn green, and modifying it would insert a new keyframe at the current frame index, turning the field orange to highlight the change.
+Once enabled, the property field would turn green, while modifying it would insert a new keyframe at the current frame index, turning the field orange to highlight the change.
 I also found I had to disable the editing of keyframed properties during playback (something that's otherwise possible and a great way to tweak the rendering of a scene) so as to avoid inserting what'd be one keyframe per frame. :slightly_smiling_face:
 
 Finally, I decided to have the timeline content be encoded for a 24Hz target frequency, meaning you could only ever store up to 24 keyframes inside a given second.
