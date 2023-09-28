@@ -80,7 +80,7 @@ As an illustration, here's a collection of the different node categories availab
 
 <div style="text-align: center;">
 
-![node-categories](/node-categories.png)<br/>
+![node-categories](/node-categories.png)\
 *The available node categories in RogueEngine.*
 
 </div>
@@ -109,8 +109,7 @@ Our first step should therefore be to define that data model, so here goes:
 
 <div style="text-align: center;">
 
-![data-mode](/data-model.png)<br/>
-
+![data-mode](/data-model.png)\
 *Data model for RogueEngine's runtime.*
 
 </div>
@@ -127,8 +126,7 @@ Having such a clearly defined data model makes it easy to serialize and deserial
 
 <div style="text-align: center;">
 
-![timeline](/timeline.jpg)
-
+![timeline](/timeline.jpg)\
 *The timeline panel allows the edition of ranges, i.e., when is a node or layer active or not.*
 
 </div>
@@ -141,7 +139,32 @@ So it's definitely good enough for now and makes undo/redo indeed trivial to man
 
 ### Animating the scene
 
-*TODO: mention something about the keyframes as an extension to the data model...*
+Next stop on the road was to get things moving.
+
+My plan here was to allow keyframing any property that's either a `float` or a vector of floats (e.g., `vec2`, `vec3`, `vec4`).
+For this task, I pretty much mimicked Blender and added a "K" button next to all keyframe-able properties.
+Once enabled, the property field would turn green, and modifying it would insert a new keyframe at the current frame index, turning the field orange to highlight the change.
+I also found I had to disable the editing of keyframed properties during playback (something that's otherwise possible and a great way to tweak the rendering of a scene) so as to avoid inserting what'd be one keyframe per frame. :slightly_smiling_face:
+
+Finally, I decided to have the timeline content be encoded for a 24Hz target frequency, meaning you could only ever store up to 24 keyframes inside a given second.
+This is fine however, as we can simply turn our frame index into a floating-point number and interpolate between keyframes if the demo ends up running at higher framerates.
+
+<div style="text-align: center;">
+
+![curve-editor](/curve-editor.jpg)\
+*Points on a curve; still doing basic linear interpolation, cubic spline coming soon™.*
+
+</div>
+
+\
+One more thing I added was this "M" button, which you can see next to the keyframe toggle in the inspector panel.
+Toggling it makes the property appear as a pin onto the node itself in the graph.
+The user can then plug in other nodes to modify the property procedurally (adding the elapsed time in seconds, multiplying with a sine wave or noise function, etc.).
+
+This is a great tool for continuous, repeating, or random animation.
+Things that would otherwise be a pain to do with editing a curve.
+As it turns out, we ended up using this functionality way more than the curve editor itself!
+This probably goes some way as to explaining why this view is the only part of the UI that hasn't been completed yet...
 
 ### Code nodes
 
