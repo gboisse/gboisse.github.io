@@ -25,7 +25,7 @@ As a teaser, here's a screenshot of the tool running our [Revision 2023](https:/
 
 I started thinking about this project back in 2019 with the aim of releasing some PC demo productions.
 I had heard of the [demoscene](https://en.wikipedia.org/wiki/Demoscene) for the first time about four years earlier through some coworkers at Sony and it gradually grew on me to the point that I too wanted to participate.
-I really wanted to be able to team up with artists and designers for making these demos rather than, say, other programmers or trying to complete a production on my own.
+I really wanted to be able to team up with artists and designers for making these rather than, say, other programmers or trying to complete a production on my own.
 This seemed like a better way to reach a higher visual bar as well as being more entertaining overall. :slightly_smiling_face:
 
 This translated in my mind to having an interface that anyone could use for interacting with and tweaking the content, although in retrospect, such a system comes in extremely handy for programmers too and I find myself increasingly using it for many purposes, such as research and experimentation.
@@ -159,7 +159,7 @@ This is fine however, as we can simply turn our frame index into a floating-poin
 \
 One more thing I added was this "M" button, which you can see next to the keyframe toggle in the inspector panel.
 Toggling it makes the property appear as a pin onto the node itself in the graph.
-The user can then plug in other nodes to modify the property procedurally (adding the elapsed time in seconds, multiplying with a sine wave or noise function, etc.).
+The user can then plug in other nodes and modify the property procedurally (adding the elapsed time in seconds, multiplying with a sine wave or noise function, etc.).
 
 This is a great tool for continuous, repeating, or random animation.
 Things that would otherwise be a pain to do with editing a curve.
