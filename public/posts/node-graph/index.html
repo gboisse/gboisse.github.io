@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Visual node graph with ImGui | Guillaume&#39;s graphics blog</title>
+<meta property="og:title" content="Visual node graph with ImGui | Guillaume&#39;s graphics blog" />
+<meta name="twitter:title" content="Visual node graph with ImGui | Guillaume&#39;s graphics blog" />
+<meta itemprop="name" content="Visual node graph with ImGui | Guillaume&#39;s graphics blog" />
+<meta name="application-name" content="Visual node graph with ImGui | Guillaume&#39;s graphics blog" />
+<meta property="og:site_name" content="Guillaume&#39;s graphics blog" />
+
+<meta name="description" content="Using Dear ImGui for creating a visual node graph.">
+<meta itemprop="description" content="Using Dear ImGui for creating a visual node graph." />
+<meta property="og:description" content="Using Dear ImGui for creating a visual node graph." />
+<meta name="twitter:description" content="Using Dear ImGui for creating a visual node graph." />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="https://gboisse.github.io" />
+  <meta property="og:image" content="https://gboisse.github.io" />
+  <meta name="twitter:image" content="https://gboisse.github.io" />
+  <meta name="twitter:image:src" content="https://gboisse.github.io" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-09-28T00:00:00Z />
+    <meta property="article:published_time" content=2023-09-28T00:00:00Z />
+
+    
+    <meta property="og:article:author" content="Guillaume boissé" />
+    <meta property="article:author" content="Guillaume boissé" />
+    <meta name="author" content="Guillaume boissé" />
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Visual node graph with ImGui",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2023-09-28",
+        "description": "Using Dear ImGui for creating a visual node graph.",
+        "wordCount":  1610 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2023-09-28",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Guillaume\u0027s graphics blog"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.113.0">
+
+    
+
+    <link rel="canonical" href="https://gboisse.github.io/posts/node-graph/">
+    <link href="/style.min.41175b050032d7b140ed7b503e6724d0166055787dc68ff6fb7e4d5d7b9aebf1.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="https://gboisse.github.io/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<script src="/js/medium-zoom.min.js"></script>
+
+    <meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    </head>
+<body data-theme = "dark" class="notransition">
+
+<script src="/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="https://gboisse.github.io/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/">
+                        Home
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/posts/">
+                        Posts
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        About
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Visual node graph with ImGui</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2023-09-28T00:00:00&#43;00:00" itemprop="datePublished"> 28 Sep 2023 </time>
+                </div></header>
+            <div class="page-content">
+                <div style="text-align: justify">
+<p>I wanted my first post on this blog to be about the node graph system that I created for my personal graphics engine named &ldquo;RogueEngine&rdquo;.
+I may talk about the engine itself in another post but for now I&rsquo;d like to focus on its UI.</p>
+<p>As a teaser, here&rsquo;s a screenshot of the tool running our <a href="https://www.pouet.net/party.php?which=1550&amp;when=2023">Revision 2023</a> demo:</p>
+<div style="text-align: center;">
+<p><img src="/node-graph.jpg" alt="node-graph"><br>
+<em>Intro sequence from <a href="https://www.pouet.net/prod.php?which=94177">Reality Check</a>.</em></p>
+</div>
+<h3 id="a-bit-of-background">A bit of background</h3>
+<p>I started thinking about this project back in 2019 with the aim of releasing some PC demo productions.
+I had heard of the <a href="https://en.wikipedia.org/wiki/Demoscene">demoscene</a> for the first time about four years earlier through some coworkers at Sony and it gradually grew on me to the point that I too wanted to participate.
+I really wanted to be able to team up with artists and designers for making these rather than, say, other programmers or trying to complete a production on my own.
+This seemed like a better way to reach a higher visual bar as well as being more entertaining overall. 🙂</p>
+<p>This translated in my mind to having an interface that anyone could use for interacting with and tweaking the content, although in retrospect, such a system comes in extremely handy for programmers too and I find myself increasingly using it for many purposes, such as research and experimentation.
+Regardless, I started looking into interfaces for visual content creation, which were at the time both quite fascinating and mysterious to me having little to no experience with such systems.</p>
+<p>I was initially not particularly fond of node graphs however, for mainly two reasons:</p>
+<ul>
+<li>Many of these systems seemed to be what I&rsquo;d call &ldquo;coding with nodes&rdquo;; while it may be more visual, it isn&rsquo;t fundamentally any simpler.</li>
+<li>It can get real messy real fast.</li>
+</ul>
+<div style="text-align: center;">
+<p><img src="/blueprint-from-hell.png" alt="blueprint-from-hell"><br>
+<em>Courtesy of <a href="https://blueprintsfromhell.tumblr.com/">blueprints from hell</a>.</em></p>
+</div>
+<p><br>
+Node systems were still appealing to me however for different reasons;
+they felt more intuitive and less intimidating than other solutions with more &ldquo;traditional&rdquo; UI and they tend to look really nice on screenshots.
+Then maybe it&rsquo;ll be easier for me to convince other people to get on board? 🙂</p>
+<p>So I started thinking about a node system that would <strong>not</strong> be &ldquo;coding with nodes&rdquo;.</p>
+<h3 id="node-system">Node system</h3>
+<p>Having little to no experience with node-based systems, I went ahead and looked at other software for inspiration.
+Big sources of inspiration for me would be software such as <a href="https://www.blender.org/">Blender</a>, <a href="https://www.notch.one/">Notch</a>, and <a href="https://godotengine.org/">Godot</a>.
+In particular, I was wondering how to create a system that&rsquo;d be both easy to use and expressive enough to allow the creation of interesting and emergent effects rather than simply ticking available engine features on or off&hellip;</p>
+<p>Towards the end of 2019, something somewhat cliked in my mind;
+I&rsquo;d design the system to have only two types of nodes (okay, three) and they&rsquo;d work like this:</p>
+<ul>
+<li>The <strong>root node</strong> from which the graph traversal would start at runtime.</li>
+<li>The <strong>data node</strong> representing a piece of data of a given type.</li>
+<li>The <strong>component node</strong> that can be attached to a data node to modify it.</li>
+</ul>
+<div style="text-align: center;">
+<p><img src="/node-types.png" alt="node-types"><br>
+<em>The different node types.</em></p>
+</div>
+<p><br>
+This seemingly simple setup seemed to open up a lot of possibilities. 🙂</p>
+<p>I could have some &ldquo;geometry data node&rdquo; being nothing more than an index and a vertex buffer (plus some bounding box and probably other things&hellip;) while a &ldquo;component node&rdquo; connected to it would act as some kind of vertex shader that could be used for displacement purposes.</p>
+<p>Similarly, a &ldquo;shading data node&rdquo; could represent a standard material while a &ldquo;component node&rdquo; would be some piece of code to be injected into the fragment shader for various per-pixel procedural shading effects.</p>
+<p>This felt like a good solution; I could instantly see how most features could map to this setup and it most definitely wasn&rsquo;t a visual programming system&hellip;
+As an illustration, here&rsquo;s a collection of the different node categories available in the engine at the time of writing:</p>
+<div style="text-align: center;">
+<p><img src="/node-categories.png" alt="node-categories"><br>
+<em>The available node categories in RogueEngine.</em></p>
+</div>
+<p><br>
+The great thing about this approach is that the dependent nodes do not need to know how the data from the data node came to be (in the case of the geometry category, it could be a <a href="https://en.wikipedia.org/wiki/Procedural_generation">procedurally-generated</a> mesh, geometry loaded through some <a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html">glTF</a> file, or even <a href="https://en.wikipedia.org/wiki/Metaballs">metaballs</a> generated from the particle system), the format of the data node being fixed (in this case, an index and a vertex buffer&hellip;), we always know how to operate on it. 🙂</p>
+<div style="text-align: center;">
+<img src="/metaballs-nodes.png" width="49%" />
+<img src="/metaballs.jpg" width="49%" /><br/>
+<em>Metaballs created using the nodes, a classic of the demoscene.</em>
+</div>
+<h3 id="data-model-vs-gui-code">Data model vs. GUI code</h3>
+<p>Now that I knew how my node system would operate, I had to find how to implement it.
+My plan was to use <a href="https://github.com/ocornut/imgui">Dear ImGui</a> for the UI because it&rsquo;s a joy to use and, I have to admit, I had little intention of investigating other GUI solutions.
+ImGui is actually a great fit I found to crafting such a creative UI system.</p>
+<p>The main insight to take away in my opinion is the need to separate the data (what I&rsquo;d call the <strong>data model</strong>) from the UI logic (often referred to as the <strong><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">view</a></strong>).
+Having such a separation naturally implies creating an interface for iterating the data inside your &ldquo;project&rdquo; that can then be used both by the runtime, when playing back the demo content, and the ImGui code, when running the editor.</p>
+<p>Our first step should therefore be to define that data model, so here goes:</p>
+<div style="text-align: center;">
+<p><img src="/data-model.png" alt="data-mode"><br>
+<em>Data model for RogueEngine&rsquo;s runtime.</em></p>
+</div>
+<p><br>
+There are essentially only three types of resources that a user can interact with through the interface and manipulate within a project (along with a few more as detailed below&hellip;):</p>
+<ul>
+<li><strong>Assets</strong>: A list of all your imported 3D models, textures, music files, etc.</li>
+<li><strong>Layers</strong>: These allow to group nodes, mostly to facilitate multi-scene projects.</li>
+<li><strong>Nodes</strong>: Nodes belong to their parent layer and can be executed by the runtime.</li>
+</ul>
+<p>Furthermore, <strong>Ranges</strong> represent the series of time segments for when a particular resource is active on the timeline, while <strong>Properties</strong> represent, as the name suggests, the properties of a given node, such as values and colors, links to assets and/or other nodes, etc.</p>
+<p>Having such a clearly defined data model makes it easy to serialize and deserialize the content of a project (for saving and loading purposes respectively) as we can rely on a well identified distinction between what should be persisted vs. what&rsquo;s engine specific.</p>
+<div style="text-align: center;">
+<p><img src="/timeline.jpg" alt="timeline"><br>
+<em>The timeline panel allows the edition of ranges, i.e., when is a node or layer active or not.</em></p>
+</div>
+<p><br>
+Finally, such a setup makes it rather simple to implement dreaded (but oh so useful!) features such as undo/redo.
+I picked the same approach than <a href="https://blog.voxagon.se/2018/07/10/undo-for-lazy-programmers.html">@voxagonlabs</a> and went ahead with serializing the whole project on every change to the data model.
+This may sound rather inefficient (and I&rsquo;m sure it won&rsquo;t hold up past certain project sizes&hellip;) but there isn&rsquo;t really all that much data you typically have to serialize when saving a project.
+So it&rsquo;s definitely good enough for now and makes undo/redo indeed trivial to manage. 🙂</p>
+<h3 id="animating-the-scene">Animating the scene</h3>
+<p>Next stop on the road was to get things moving.</p>
+<p>My plan here was to allow keyframing any property that&rsquo;s either a <code>float</code> or a vector of floats (e.g., <code>vec2</code>, <code>vec3</code>, <code>vec4</code>).
+For this task, I pretty much mimicked Blender and added a &ldquo;K&rdquo; button next to all keyframe-able properties.
+Once enabled, the property field would turn green, while modifying it would insert a new keyframe at the current frame index, turning the field orange to highlight the change.
+I also found I had to disable the editing of keyframed properties during playback (something that&rsquo;s otherwise possible and a great way to tweak the rendering of a scene) so as to avoid inserting what&rsquo;d be one keyframe per frame. 🙂</p>
+<p>Finally, I decided to have the timeline content be encoded for a 24Hz target frequency, meaning you could only ever store up to 24 keyframes inside a given second.
+This is fine however, as we can simply turn our frame index into a floating-point number and interpolate between keyframes if the demo ends up running at higher framerates.</p>
+<div style="text-align: center;">
+<p><img src="/curve-editor.jpg" alt="curve-editor"><br>
+<em>Points on a curve; still doing basic linear interpolation, cubic spline coming soon™.</em></p>
+</div>
+<p><br>
+One more thing I added was this &ldquo;M&rdquo; button, which you can see next to the keyframe toggle in the inspector panel.
+Toggling it makes the property appear as a pin onto the node itself in the graph.
+The user can then plug in other nodes and modify the property procedurally (adding the elapsed time in seconds, multiplying with a sine wave or noise function, etc.).</p>
+<p>This is a great tool for continuous, repeating, or random animation.
+Things that would otherwise be a pain to do with editing a curve.
+As it turns out, we ended up using this functionality way more than the curve editor itself!
+This probably goes some way as to explaining why this view is the only part of the UI that hasn&rsquo;t been completed yet&hellip;</p>
+<h3 id="code-nodes">Code nodes</h3>
+<p>I&rsquo;ve mentioned throughout this post that I was mostly trying to steer away from visual programming, but we may still want to allow the use of coding for these moments where built-in nodes aren&rsquo;t quite flexible enough.
+Instead of &ldquo;coding with nodes&rdquo; however, here you&rsquo;d simply create a &ldquo;code node&rdquo; letting you write actual text inside a field (or copy/paste from <a href="https://www.shadertoy.com/">Shadertoy</a>!).
+You can then add &ldquo;bindings&rdquo; to create tweakable properties that can be accessed directly from the shader:</p>
+<div style="text-align: center;">
+<p><img src="/code-node.gif" alt="code-node"><br>
+<em>Code node with animated binding.</em></p>
+</div>
+<p><br>
+Oh, and these properties are just like any other node property, so they too can be animated and/or plugged into other nodes&hellip; 🙂</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>I hope this overview was useful, don&rsquo;t hesitate to <a href="https://twitter.com/guitio2002">reach out</a> or leave a comment!</p>
+
+            </div>
+        </article>
+        <script>mediumZoom(document.querySelectorAll('img'), { background: "#434648" })</script><hr style="margin-top: 40px; margin-bottom: 40px;" />
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-gboisse-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://twitter.com/guitio2002" target="_blank" rel="noopener noreferrer me"
+    title="Twitter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+    </path>
+</svg>
+</a>
+<a href="https://linkedin.com/in/guillaume-boiss%c3%a9-a7993a22" target="_blank" rel="noopener noreferrer me"
+    title="Linkedin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+<a href="https://github.com/gboisse" target="_blank" rel="noopener noreferrer me"
+    title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+</div>
+    <small class="footer_copyright">
+        © 2023 Guillaume Boissé.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noreferrer noopener">Hugo blog awesome</a>
+        theme on
+        <a href="https://gohugo.io" target="_blank" rel="noreferrer noopener">Hugo</a>.
+    </small>
+</footer><a href="#" title="Go to top" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+    
+    
+        
+    
+
+    
+    
+        
+    
+
+
+
+    
+    <script src="https://gboisse.github.io/js/main.min.35f435a5d8eac613c52daa28d8af544a4512337d3e95236e4a4978417b8dcb2f.js" integrity="sha256-NfQ1pdjqxhPFLaoo2K9USkUSM30&#43;lSNuSkl4QXuNyy8="></script>
+
+    
+
+</body>
+</html>

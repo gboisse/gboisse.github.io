@@ -6,7 +6,19 @@
     <description>Recent content in Home on Guillaume&#39;s graphics blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gboisse.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gboisse.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visual node graph with ImGui</title>
+      <link>https://gboisse.github.io/posts/node-graph/</link>
+      <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gboisse.github.io/posts/node-graph/</guid>
+      <description>I wanted my first post on this blog to be about the node graph system that I created for my personal graphics engine named &amp;ldquo;RogueEngine&amp;rdquo;. I may talk about the engine itself in another post but for now I&amp;rsquo;d like to focus on its UI.
+As a teaser, here&amp;rsquo;s a screenshot of the tool running our Revision 2023 demo:
+Intro sequence from Reality Check.
+A bit of background I started thinking about this project back in 2019 with the aim of releasing some PC demo productions.</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>https://gboisse.github.io/pages/about/</link>

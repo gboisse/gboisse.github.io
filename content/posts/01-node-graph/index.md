@@ -1,7 +1,7 @@
 ---
 slug: node-graph
 title: Visual node graph with ImGui
-date: 2023-09-29
+date: 2023-09-28
 author: Guillaume Boissé
 description: Using Dear ImGui for creating a visual node graph.
 ---
