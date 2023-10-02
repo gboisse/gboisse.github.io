@@ -1,7 +1,7 @@
 ---
 slug: gi-1.0
 title: Integrating GI-1.0 into a forward renderer
-date: 2023-06-22
+date: 2023-10-01
 author: Guillaume Boissé
 description: Case study of integrating a dynamic global illumination pipeline into a forward renderer.
 draft: true

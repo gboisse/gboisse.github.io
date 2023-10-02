@@ -1,7 +1,7 @@
 ---
 slug: volume-shadows
 title: Volume shadows for particles
-date: 2023-06-20
+date: 2023-09-29
 author: Guillaume Boissé
 description: How to render real-time high quality volume shadows for particles.
 draft: true
