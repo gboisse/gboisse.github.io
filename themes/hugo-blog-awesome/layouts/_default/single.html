@@ -15,9 +15,7 @@
                 {{ .Content }}
             </div>
         </article>
-        {{- if eq .Type "posts" }}
         <script>mediumZoom(document.querySelectorAll('img'), { background: {{ .Site.Params.webmanifest.theme_color }} })</script>
-        {{- end -}}
         {{- partial "comments.html" . -}}
     </main>
 </div>
