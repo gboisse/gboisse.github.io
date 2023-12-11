@@ -84,6 +84,9 @@ Shadow mask, patching, etc.
 
 </div>
 
+### Following a skinned mesh
+
+blablabla.
 
 ### Conclusion
 
