@@ -77,7 +77,7 @@ Add a new scene!
 <div style="text-align: center;">
 
 ![last-minute-scene](/last-minute-scene.jpg)
-*Scene created right before the deadline.*
+*Impromptu scene created right before the deadline.*
 
 </div>
 
