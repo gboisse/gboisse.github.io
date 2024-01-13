@@ -70,9 +70,9 @@ Could be better, but at this point we were well out of time.
 
 Shader preloading, etc.
 
-Last minute scene!?\
-Rythm wasn't good, trying to match the music -> transitions were too long...\
-Add a new scene!
+Meanwhile, Made was finishing work with [med](https://www.pouet.net/user.php?who=288) on completing the music, so we could start syncing and locking scenes timings.
+That's when we realised that the pace wasn't great, trying to match the music -> transitions were too long...
+So we went ahead and decided to add a brand new scene :slightly_smiling_face:
 
 <div style="text-align: center;">
 
@@ -81,25 +81,41 @@ Add a new scene!
 
 </div>
 
-<!--
-Particles disappearing halfway through a shot... still haven't solved the problem!!
--->
-
-Deadline was approaching fast, so we decided to stop tweaking and hand in the demo as it was.\
+\
+At this point, the deadline was approaching fast, so we decided to stop tweaking and hand in the demo as it was.
 Put it on a USB stick, brought it over to the organisers to test everything was working fine and the demo would fail to launch...
+
+<div style="text-align: center;">
+
+![reality-check-error](/reality-check-error.jpg)
+*The demo wouldn't launch on the compo PC only a few hours before the deadline...*
+
+</div>
 
 I first I thought it'd be caused by using Windows 11, but no, this was a Windows 10 machine, crap...\
 No dll missing, etc.
 
-No fix seemed obvious, we went from thinking we were done to having no demo to run at all!
+After some research, no fix seemed obvious, we had just gone from being done to having no demo at all!
 
-At this point, I got some sort of inspiration; let's try to rebuild the demo using the latest version of Visual Studio (VS2022 instead of VS2017, which I tend to stick on) and the magic happens, the demo loaded fine and played all the way through with no issue!
+At this point, I got some sort of inspiration;
+I decided to try and rebuild the demo using the latest version of Visual Studio (i.e., 2022 instead of 2017, which I tend to stick with)... and it worked!
+Phew...
+<!--the magic happened, the demo loaded fine and played all the way through with no issue!-->
 
 Demo compo was very long, went for some rest and got back just in time for the start of the PC compo!\
 Lots of entries and we were actually ranked amongst the last productions :slightly_smiling_face:
 
+<div style="text-align: center;">
+
+![reality-check-entry](/reality-check-entry.jpg)
+*Number 36 out of 41 entries, not bad* :slightly_smiling_face:
+
+</div>
+
 As the demo loaded and started to play, the audio was pretty broken and glitchy, crap, no much to be done now...\
 Thankfully, this cleared out after a few seconds and no further issue occurred, phew.
+
+Ended up 4th, just short of the podium...
 
 Until next time!
 
