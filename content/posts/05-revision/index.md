@@ -28,7 +28,7 @@ We soon had a storyboard ready...
 
 </div>
 
-Pretty soon afterwards, we got joined by Miguel (a.k.a., [bevelledape](https://www.pouet.net/user.php?who=106515)) who would handle the modelling and texturing side of things (and there was lots to do on that front!).
+Pretty soon afterwards, we got joined by Miguel who would handle the modelling and texturing side of things (and there was lots to do on that front!).
 
 From this point, not really much happened; everyone was working a bit on advancing things but without proper focus and collaboration, not much was happening.
 
@@ -37,7 +37,7 @@ It became clear blablabla, so in March 2023 we organised a trip to Bilbao, got a
 <div style="text-align: center;">
 
 ![reality-check-miguel](/reality-check-miguel.jpg)
-*Miguel in full demo mode at the Bilbao flat* :slightly_smiling_face:
+*Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), in full demo mode at the Bilbao flat.*
 
 </div>
 
@@ -77,7 +77,7 @@ So we went ahead and decided to add a brand new scene :slightly_smiling_face:
 <div style="text-align: center;">
 
 ![last-minute-scene](/last-minute-scene.jpg)
-*Impromptu scene created right before the deadline.*
+*Impromptu scene put together right before the deadline.*
 
 </div>
 
