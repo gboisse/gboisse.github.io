@@ -20,7 +20,7 @@ Got in touch with Made who had won the last two revisions in hope that...\
 Positive reaction :slightly_smiling_face: and he soon proposed some concept idea.
 -->
 
-He accepted pretty much instantly, so we got to talking about various creative ideas and quickly settled on a concept that he had on the backburner.
+He accepted pretty much instantly, so we got talking about various creative ideas and quickly settled on a concept that he had on the backburner.
 Pretty shortly afterwards, we had a nice storyboard. :slightly_smiling_face:
 
 <!--He soon came up with some concept ideas and after some initial discussions, we settled on one.
