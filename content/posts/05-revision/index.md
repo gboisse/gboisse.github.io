@@ -3,36 +3,44 @@ slug: road-to-revision-2023
 title: Road to Revision 2023
 date: 2023-10-02
 author: Guillaume Boissé
-description: Preparing a PC demo for the Revision 2023 demoparty.
+description: The making of a PC demo for the Revision 2023 demoparty.
 draft: true
 ---
 
 <div style="text-align: justify">
 
-Back in 2021, I got in touch with [Made](https://www.pouet.net/user.php?who=98709) in the hopes we could join our efforts in creating a PC demo for Revision.
-Made had been making demo for years and had recently won the past two Revision parties in that category, an impressive feat.
-So I sent him a couple of screenshots from my engine and its node editor hoping that'd get him excited and blablabla.
+Back in 2021, I got in touch with [Made](https://www.pouet.net/user.php?who=98709) in the hopes we could join our efforts in creating a PC demo for [Revision](https://2023.revision-party.net/).
+Made have been making demos for years and had recently won the past two Revision parties in that category, an impressive feat.
+So I sent him a couple of screenshots of some renders made with my personal engine hoping that'd get him excited enough.
+
+<!--I had started turning my personal graphics engine into a "demoengine" about two years earlier with the aim of releasing demoscene productions.-->
 
 <!--
 Got in touch with Made who had won the last two revisions in hope that...\
 Positive reaction :slightly_smiling_face: and he soon proposed some concept idea.
 -->
 
-He soon came up with some concept ideas and after some initial discussions, we settled on one.
-We soon had a storyboard ready...
+He accepted pretty much instantly, so we got to talking about various creative ideas and quickly settled on a concept that he had on the backburner.
+Pretty shortly afterwards, we had a nice storyboard. :slightly_smiling_face:
+
+<!--He soon came up with some concept ideas and after some initial discussions, we settled on one.
+We soon had a storyboard ready...-->
 
 <div style="text-align: center;">
 
 ![reality-check-storyboard](/reality-check-storyboard.png)
-*Early storyboard for Reality Check.*
+*Final storyboard for Reality Check.*
 
 </div>
 
-Pretty soon afterwards, we got joined by Miguel who would handle the modelling and texturing side of things (and there was lots to do on that front!).
+Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there certainly was lots to do on that front!).
 
-From this point, not really much happened; everyone was working a bit on advancing things but without proper focus and collaboration, not much was happening.
+From this point on, not really much happened for the better part of the year and the next; everyone was working somewhat on advancing bit and pieces but, without proper focus and collaboration, not much was happening.
 
-It became clear blablabla, so in March 2023 we organised a trip to Bilbao, got a lot done, and got a good working/collaboration rythm.
+Towards the end of 2022, we arrived to a point where it seemed like most of the engine features that we'd need were implemented and working.
+On the visual side however, we still didn't really have much to show for...
+
+<!--It became clear blablabla, so in March 2023 we organised a trip to Bilbao, got a lot done, and got a good working/collaboration rythm.-->
 
 <div style="text-align: center;">
 
@@ -40,6 +48,16 @@ It became clear blablabla, so in March 2023 we organised a trip to Bilbao, got a
 *Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), in full demo mode at the Bilbao flat.*
 
 </div>
+
+... until March 2023!
+It started to become clear that if we were to release anything, something had to happen.
+So we planned to all meet up for a full week in a flat in beautiful Bilbao.
+
+This week turned out to be key to kick off the production of the demo; we made great progress on the opening sequence and got a much better flow for working all together.
+We were still seriously behind on most shots however, with the deadline less than a month away.
+
+Particularly the city shots turned out to be troublesome.
+Plugin blablabla
 
 ...
 
