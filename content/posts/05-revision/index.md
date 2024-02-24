@@ -11,7 +11,7 @@ draft: true
 
 Back in 2021, I got in touch with [Made](https://www.pouet.net/user.php?who=98709) in the hopes we could join our efforts in creating a PC demo for [Revision](https://2023.revision-party.net/).
 Made have been making demos for years and had recently won the past two Revision parties in that category, an impressive feat.
-So I sent him a couple of screenshots of some renders made with my personal engine hoping that'd get him excited enough.
+So I sent him a couple renders I made with my personal engine hoping that'd get him excited enough...
 
 <!--I had started turning my personal graphics engine into a "demoengine" about two years earlier with the aim of releasing demoscene productions.-->
 
@@ -49,12 +49,12 @@ On the visual side however, we still didn't really have much to show for...
 
 </div>
 
-... until March 2023!
+... until the start of March 2023!
 It started to become clear that if we were to release anything, something had to happen.
-So we planned to all meet up for a full week in a flat in beautiful Bilbao.
+So we organised to all meet up for a full week at a flat in beautiful Bilbao.
 
-This week turned out to be key to kick off the production of the demo; we made great progress on the opening sequence and got a much better flow for working all together.
-We were still seriously behind on most shots however, with the deadline less than a month away.
+This week turned out to be key to kick off the production; we made great progress on the opening sequence and got a much better flow for working all together.
+We were still seriously behind on most shots however, with the deadline less than a month away...
 
 Particularly the city shots turned out to be troublesome.
 Plugin blablabla
