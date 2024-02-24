@@ -126,7 +126,7 @@ Lots of entries and we were actually ranked amongst the last productions :slight
 <div style="text-align: center;">
 
 ![reality-check-entry](/reality-check-entry.jpg)
-*Number 36 out of 41 entries, not bad* :slightly_smiling_face:
+*Positioned 36th out of 41 entries, not bad* :slightly_smiling_face:
 
 </div>
 
