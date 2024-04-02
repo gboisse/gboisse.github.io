@@ -35,10 +35,10 @@ We soon had a storyboard ready...-->
 
 Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there was lots to do on that front!).
 
-From this point on, everyone started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was happening.
+From this point on, everyone started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was really happening.
 
 Towards the end of 2022, we arrived at a point where it seemed like most of the engine features that we'd need were implemented and working.
-On the visual side however, besides some nice Blender renders, we still didn't really have much to show for...
+On the visual side however, besides some nice Blender renders, we still didn't have much to show for...
 
 <!--It became clear blablabla, so in March 2023 we organised a trip to Bilbao, got a lot done, and got a good working/collaboration rythm.-->
 
@@ -53,31 +53,59 @@ On the visual side however, besides some nice Blender renders, we still didn't r
 It started to become clear that if we were to release anything, something had to happen.
 So we organised for everyone to meet up for a full week at a flat in beautiful Bilbao.
 
-This week turned out to be key to kick off the production;
+This week turned out to be key in kicking off the production;
 we made great progress on the opening sequence and got a much better flow for working all together.
 We were still seriously behind on most shots however, with the deadline now less than a month away...
 
 In particular, the city shots were turning out to be troublesome;
-we had purchased some city plugin with the hopes it'd be enough to generate the scene.
-Unfortunately the output geometry ended up being way too tessellated resulting in a total of ~23 million triangles.
+we had purchased some city plugin hoping it'd be enough to generate the scene.
+Unfortunately the output geometry ended up being way too tessellated resulting in a total of over 23 million triangles.
 This was too much especially considering nearly all our lighting is ray traced in some GPU-based software ray tracer.
-To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific features making the scene very difficult to export in any usable way.
+To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific shading features making the scene very difficult to export in any usable way. :slightly_frowning_face:
 
+<!--After the high of completing the opening sequence, things started looking pretty grim.-->
 
+At this point, we thankfully started getting some help from Naël, a friend of Made, who was both able and willing to spend some time fixing the city scene.
+This brought us to a fully working scenes made of ~300k triangles and correct looking materials.
+Thanks Naël! <!--:slightly_smiling_face:-->
+
+<div style="text-align: center;">
+
+![city-shot](/city-shot.jpg)
+*City scene finally imported and rendered correctly.*
+
+</div>
 
 <!--
 Particularly the city shots turned out to be troublesome.
 Plugin blablabla
 -->
 
-...
+Things were starting to look pretty good and Made and myself could finish up the final bits of color grading for the opening sequence working togeteher in some cafe on the last day of our Bilbao stay.
+With this, we had at least fully completed the first third of the production...
 
+... until I realised we were running into serious performance issues.
+The framerate would start stuttering strongly and erratically throughout the sequence.
+We initially put that onto my laptop's GPU throttling under the load (and it was getting hot indeed).
+But the same issue was still showing on some powerful desktop PC back home... crap. :confused:
+
+<!--
 Frame could start stuttering strongly and erratically throughout the first sequence.\
 Put that onto my laptop's GPU throttling under the load...\
 Same issue after trying out on a workstation... crap:/\
+-->
 
+I took the opportunity to add some more statistics and metrics of both resource usage and memory amounts, which led me to find the culprit for the stuttering.
+Indeed, I realised the our shadow [FBOs](https://en.wikipedia.org/wiki/Framebuffer_object), used for rendering our [shadow maps](https://en.wikipedia.org/wiki/Shadow_mapping), were being re-created everytime a light would turn on or off.
+
+This was initially designed as an optimisation, where a light source with null emission wouldn't draw shadow maps, since they weren't needed.
+But we had flickering lights in our content, which in turn was triggering thousands of FBO destruction and creation events resulting in the heavy stuttering we had observed.
+Thankfully, once located, the error was trivial to fix and I was now able to witness a solid 99+% GPU usage all throughout the opening shot. :slightly_smiling_face:
+
+<!--
 Found out shadow FBOs were being re-created everytime a light would turn on/off due to flickering!!\
 Fixed it :slightly_smiling_face:
+-->
 
 <div style="text-align: center;">
 
