@@ -10,8 +10,8 @@ draft: true
 <div style="text-align: justify">
 
 Back in 2021, I got in touch with [Made](https://www.pouet.net/user.php?who=98709) in the hopes we could join our efforts in creating a PC demo for [Revision](https://2023.revision-party.net/).
-Made have been making demos for years and had recently won the past two Revision parties in that category, an impressive feat.
-So I sent him a couple renders I made with my personal engine hoping that'd get him excited enough...
+Made has been making demos for years and had recently won two Revision parties in that category, an impressive feat.
+So I sent him a couple of renders I made with my personal engine hoping that'd get him excited enough...
 
 <!--I had started turning my personal graphics engine into a "demoengine" about two years earlier with the aim of releasing demoscene productions.-->
 
@@ -20,7 +20,7 @@ Got in touch with Made who had won the last two revisions in hope that...\
 Positive reaction :slightly_smiling_face: and he soon proposed some concept idea.
 -->
 
-He accepted pretty much instantly, so we got talking about various creative ideas and quickly settled on a concept that he had on the backburner.
+He accepted pretty much instantly, so we started talking about various creative ideas and quickly settled on a concept that he had on the backburner.
 Pretty shortly afterwards, we had a nice storyboard. :slightly_smiling_face:
 
 <!--He soon came up with some concept ideas and after some initial discussions, we settled on one.
@@ -33,12 +33,12 @@ We soon had a storyboard ready...-->
 
 </div>
 
-Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there certainly was lots to do on that front!).
+Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there was lots to do on that front!).
 
-From this point on, not really much happened for the better part of the year and the next; everyone was working somewhat on advancing bit and pieces but, without proper focus and collaboration, not much was happening.
+From this point on, everyone started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was happening.
 
-Towards the end of 2022, we arrived to a point where it seemed like most of the engine features that we'd need were implemented and working.
-On the visual side however, we still didn't really have much to show for...
+Towards the end of 2022, we arrived at a point where it seemed like most of the engine features that we'd need were implemented and working.
+On the visual side however, besides some nice Blender renders, we still didn't really have much to show for...
 
 <!--It became clear blablabla, so in March 2023 we organised a trip to Bilbao, got a lot done, and got a good working/collaboration rythm.-->
 
@@ -51,13 +51,24 @@ On the visual side however, we still didn't really have much to show for...
 
 ... until the start of March 2023!
 It started to become clear that if we were to release anything, something had to happen.
-So we organised to all meet up for a full week at a flat in beautiful Bilbao.
+So we organised for everyone to meet up for a full week at a flat in beautiful Bilbao.
 
-This week turned out to be key to kick off the production; we made great progress on the opening sequence and got a much better flow for working all together.
-We were still seriously behind on most shots however, with the deadline less than a month away...
+This week turned out to be key to kick off the production;
+we made great progress on the opening sequence and got a much better flow for working all together.
+We were still seriously behind on most shots however, with the deadline now less than a month away...
 
+In particular, the city shots were turning out to be troublesome;
+we had purchased some city plugin with the hopes it'd be enough to generate the scene.
+Unfortunately the output geometry ended up being way too tessellated resulting in a total of ~23 million triangles.
+This was too much especially considering nearly all our lighting is ray traced in some GPU-based software ray tracer.
+To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific features making the scene very difficult to export in any usable way.
+
+
+
+<!--
 Particularly the city shots turned out to be troublesome.
 Plugin blablabla
+-->
 
 ...
 
