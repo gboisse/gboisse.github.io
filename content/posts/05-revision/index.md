@@ -96,7 +96,7 @@ Same issue after trying out on a workstation... crap:/\
 -->
 
 I took this as an opportunity to add some more statistics and metrics to the engine for both resource usage and memory amounts, which helped in identifying the culprit for the stuttering.
-Indeed, I realised that our shadow [FBOs](https://en.wikipedia.org/wiki/Framebuffer_object), used for rendering the [shadow maps](https://en.wikipedia.org/wiki/Shadow_mapping), were being re-created everytime a light would turn on or off.
+Indeed, I realised that our shadow [FBOs](https://en.wikipedia.org/wiki/Framebuffer_object), used for rendering the [shadow maps](https://en.wikipedia.org/wiki/Shadow_mapping), were being re-created every time a light would turn on or off.
 
 This was initially designed as an optimisation, where a light source with null emission wouldn't draw shadow maps, since it wouldn't contribute to the image anyway.
 But we had flickering lights in our content, which in turn was triggering thousands of FBO destruction and creation events resulting in the heavy stuttering we had observed.
@@ -131,7 +131,7 @@ Furthermore, I deferred the loading of the textures until after all assets had b
 this allowed going wide across every single image inside the demo for full multi-threaded texture loading, which helped bring the loading time down to about a minute.
 
 Finally, we performed lots of asset cleaning directly at the party place, sizing down textures and compressing them to jpegs, which left us with a package size of ~800MiB while our VRAM usage went down to ~4GiB.
-Could have been better, but at this point, we were well out of time...
+It could be improved further for sure, but at this point, we were well out of time...
 
 <!--
 So I added in a rush DXT1 and DXT5 support, deferred the texture loading until all assets had been processed allowing to go wide project-wise for fully multi-threading loading.\
@@ -143,7 +143,7 @@ Could be better, but at this point we were well out of time.
 <!--Shader preloading, etc.-->
 
 Meanwhile, Made was finishing work with [med](https://www.pouet.net/user.php?who=288) on completing the music, so we could start syncing and locking the scenes timings.
-That's when we realised that the pace wasn't great during the second part of the demo.
+That's when we realised that the pacing wasn't great during the second part of the demo.
 After aligning the content to the song structure, the transitions between shots felt too long...
 So we went ahead and decided to add a brand new scene to fix things. :slightly_smiling_face:
 
@@ -161,21 +161,21 @@ So we went ahead and decided to add a brand new scene :slightly_smiling_face:
 
 \
 At this point, the deadline was only hours away, so we decided to stop tweaking and hand in the demo as it was.
-We uploaded it to a USB stick, brought that over to the organisers so we could test it and make sure everything was working fine on the PC of the compo.
+We uploaded it to a USB stick and brought that over to the organisers so we could test on the compo maching and make sure everything was working fine.
 
 That's when we found out that the demo was simply failing to launch...
 
 <div style="text-align: center;">
 
 ![reality-check-error](/reality-check-error.jpg)
-*The demo wouldn't even launch on the compo PC...*
+*The demo wouldn't even launch on the compo machine...*
 
 </div>
 
 I'd be lying if I'd say I didn't feel a little bit of stress at that moment.
 It started daunting on me that without a fix for this, we may as well have no production at all...
 
-My first immediate thought was to blame it on some Windows 11 issue, but nope, the organizers were indeed using a Windows 10 machine, crap.
+My first immediate thought was to blame it on some Windows 11 issue, but nope, the organisers were indeed using a Windows 10 machine, crap.
 The message also wasn't indicative of any missing dll and our various google searching efforts were not returning any particularly useful answer...
 
 <!--
