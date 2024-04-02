@@ -19,7 +19,7 @@ Pretty shortly afterwards, we had a nice storyboard. :slightly_smiling_face:
 <div style="text-align: center;">
 
 ![reality-check-storyboard](/reality-check-storyboard.png)
-*Final storyboard for Reality Check.*
+*Final storyboard for "Reality Check".*
 
 </div>
 
@@ -52,7 +52,7 @@ This was too much especially for our lighting, which is nearly entirely ray trac
 To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific shading features making the scene very difficult to export in any usable way. :slightly_frowning_face:
 
 At this point, we thankfully started getting the help of Naël, a friend of Made, who was both able and willing to spend some time fixing the city scene.
-This brought us to a fully working city made of ~300k triangles and correct looking materials.
+This brought us to a fully working scene made of ~300k triangles and correct looking materials.
 Thanks Naël!
 
 <div style="text-align: center;">
@@ -95,7 +95,7 @@ So I started adding [block compression](https://en.wikipedia.org/wiki/S3_Texture
 Furthermore, I deferred the loading of the textures until after all assets had been processed;
 this allowed going wide across every single image inside the demo for full multi-threaded texture loading, which helped bring the loading time down to about a minute.
 
-Finally, we performed lots of asset cleaning directly at the party place, sizing down textures and compressing them to jpegs, which left us with a package size of ~800MiB while our VRAM usage went down to ~4GiB.
+Finally, we performed lots of asset cleaning directly at the party place, sizing down textures and compressing them to jpegs, which left us with a package size of ~800MiB while our VRAM usage went down to ~3GiB.
 It could be improved further for sure, but at this point, we were well out of time...
 
 Meanwhile, Made was finishing work with [med](https://www.pouet.net/user.php?who=288) on completing the music, so we could start syncing and locking the scenes timings.
@@ -134,7 +134,7 @@ I decided to try and rebuild the demo using the latest version of Visual Studio 
 Phew...
 
 The demo compo itself was very long with the total number of entries spoiled beforehand due to some technical blunder.
-So we went for some rest at the hotel and came back just in time for the start of the PC compo.
+So we went to have some rest at the hotel and came back just in time for the start of the PC compo.
 There were lots of entries but we ended up being ranked fairly late and amongst the best productions. :slightly_smiling_face:
 
 <div style="text-align: center;">
@@ -147,6 +147,6 @@ There were lots of entries but we ended up being ranked fairly late and amongst 
 As the demo loaded and started playing, the audio sounded pretty broken and glitchy, crap, not much to be done now...
 Thankfully, the issue cleared out after a few seconds and no further problem occurred, phew.
 
-And we ended up 4th, just short of the podium...
+And we ended up 4th! Just short of the podium...
 
 </div>
