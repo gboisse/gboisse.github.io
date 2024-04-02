@@ -201,11 +201,9 @@ There were lots of entries but we ended up being ranked fairly late and amongst 
 
 </div>
 
-As the demo loaded and started to play, the audio was pretty broken and glitchy, crap, no much to be done now...
+As the demo loaded and started playing, the audio sounded pretty broken and glitchy, crap, not much to be done now...
 Thankfully, the issue cleared out after a few seconds and no further problem occurred, phew.
 
 And we ended up 4th, just short of the podium...
-
-<!--Until next time!-->
 
 </div>
