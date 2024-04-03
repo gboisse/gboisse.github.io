@@ -70,7 +70,7 @@ The framerate would start stuttering strongly and erratically throughout the seq
 We initially put that onto my laptop's GPU throttling under the load (and it was getting pretty hot indeed).
 But the same issue was still showing on some powerful desktop PC back at home... crap. :confused:
 
-I took this as an opportunity to add some more statistics and metrics to the engine for both resource usage and memory amounts, which helped in identifying the culprit for the stuttering.
+I took this as an opportunity to add some more statistics to the engine for both resource and memory usage, which helped in identifying the culprit for the stuttering.
 Indeed, I realised that our shadow [FBOs](https://en.wikipedia.org/wiki/Framebuffer_object), used for rendering the [shadow maps](https://en.wikipedia.org/wiki/Shadow_mapping), were being re-created every time a light would turn on or off.
 
 This was initially designed as an optimisation, where a light source with null emission wouldn't draw shadow maps, since it wouldn't contribute to the image anyway.
