@@ -9,7 +9,7 @@ draft: true
 
 <div style="text-align: justify">
 
-Back in 2021, I got in touch with [Made](https://www.pouet.net/user.php?who=98709) in the hopes we could join our efforts in creating a PC demo for [Revision](https://2023.revision-party.net/).
+Back in 2021, I got in touch with [Made](https://www.pouet.net/user.php?who=98709) in the hope that we could join our efforts in creating a PC demo for [Revision](https://2023.revision-party.net/).
 Made has been making demos for years and had recently won two Revision parties in that category, an impressive feat.
 So I sent him a couple of renders I made with my personal engine hoping that'd get him excited enough...
 
