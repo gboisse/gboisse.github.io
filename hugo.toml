@@ -88,8 +88,8 @@ name = "twitter"
 url = "https://twitter.com/guitio2002"
 
 [[params.socialIcons]]
-name = "linkedin"
-url = "https://linkedin.com/in/guillaume-boissé-a7993a22"
+name = "mastodon"
+url = "https://mastodon.gamedev.place/home"
 
 [[params.socialIcons]]
 name = "github"
