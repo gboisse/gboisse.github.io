@@ -14,7 +14,7 @@ Made has been making demos for years and had recently won two Revision parties i
 So I sent him a couple of renders I made with my personal engine hoping that'd get him excited enough...
 
 He accepted pretty much instantly, so we started talking about various creative ideas and quickly settled on a concept that he had on the backburner.
-Pretty shortly afterwards, we had a nice storyboard. :slightly_smiling_face:
+Shortly after this, we had a nice storyboard. :slightly_smiling_face:
 
 <div style="text-align: center;">
 
@@ -25,7 +25,7 @@ Pretty shortly afterwards, we had a nice storyboard. :slightly_smiling_face:
 
 Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there was lots to do on that front!).
 
-From this point on, everyone started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was really happening.
+From this point on, everybody started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was really happening.
 
 Towards the end of 2022, we arrived at a point where it seemed like most of the engine features that we'd need were implemented and working.
 On the visual side however, besides some nice Blender renders, we still didn't have much to show for...
@@ -51,8 +51,8 @@ Unfortunately the output geometry ended up being way too tessellated resulting i
 This was too much especially for our lighting, which is nearly entirely ray traced using some GPU-based software ray tracer.
 To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific shading features making the scene very difficult to export in any usable way. :slightly_frowning_face:
 
-At this point, we thankfully started getting the help of Naël, a friend of Made, who was both able and willing to spend some time fixing the city scene.
-This brought us to a fully working scene made of ~300k triangles and correct looking materials.
+At this point, we thankfully started getting the help of Naël, a friend of Made, who was both able and willing to spend some time fixing the content.
+This brought us to a fully working city scene made of ~300k triangles and correct looking materials.
 Thanks Naël!
 
 <div style="text-align: center;">
@@ -91,16 +91,16 @@ The demo was about 3GiB in size and was taking over 3 minutes to load.
 Furthermore, the VRAM usage was crazy high, requiring a total of more than 12GiB, making it impossible to run on my laptop's aging GTX 1060.
 I had assumed we weren't really going to need any form of texture compression, but it was becoming clear that this assumption was in fact incorrect.
 
-So I started adding [block compression](https://en.wikipedia.org/wiki/S3_Texture_Compression) support in anger with less than a week to go before Revision starts.
+So I started adding [block compression](https://en.wikipedia.org/wiki/S3_Texture_Compression) support in anger with less than a week to go before the start of Revision.
 Furthermore, I deferred the loading of the textures until after all assets had been processed;
 this allowed going wide across every single image inside the demo for full multi-threaded texture loading, which helped bring the loading time down to about a minute.
 
-Finally, we performed lots of asset cleaning directly at the party place, sizing down textures and compressing them to jpegs, which left us with a package size of ~800MiB while our VRAM usage went down to ~3GiB.
-It could be improved further for sure, but at this point, we were well out of time...
+Finally, we performed lots of asset cleaning directly at the party place, sizing down textures and compressing them to jpegs, which left us with a package size of ~600MiB while our VRAM usage went down to ~3GiB.
+This could be improved further for sure, but at that point, we were well out of time...
 
 Meanwhile, Made was finishing work with [med](https://www.pouet.net/user.php?who=288) on completing the music, so we could start syncing and locking the scenes timings.
 That's when we realised that the pacing wasn't great during the second part of the demo.
-After aligning the content to the song structure, the transitions between shots felt too long...
+After aligning the content to the song's structure, the transitions between shots felt too long...
 So we went ahead and decided to add a brand new scene to fix things. :slightly_smiling_face:
 
 <div style="text-align: center;">
@@ -124,16 +124,16 @@ That's when we found out that the demo was simply failing to launch...
 </div>
 
 I'd be lying if I'd say I didn't feel a little bit of stress at that moment.
-It started daunting on me that without a fix for this, we may as well have no production at all...
+It started dawning on me that without a fix for this, we may as well have no production at all...
 
-My first immediate thought was to blame it on some Windows 11 issue, but nope, the organisers were indeed using a Windows 10 machine, crap.
+My first immediate thought was to blame the error on some Windows 11 issue, but nope, the organisers were indeed using a Windows 10 machine, crap.
 The message also wasn't indicative of any missing dll and our various google searching efforts were not returning any particularly useful answer...
 
 At this point, I got some sort of inspiration;
 I decided to try and rebuild the demo using the latest version of Visual Studio (i.e., 2022 instead of 2017, which I tend to stick with)... and things magically worked!
 Phew...
 
-The demo compo itself was very long with the total number of entries spoiled beforehand due to some technical blunder.
+The demo compo itself was very long with the total number of entries accidentally spoiled beforehand due to some technical blunder.
 So we went to have some rest at the hotel and came back just in time for the start of the PC compo.
 There were lots of entries but we ended up being ranked fairly late and amongst the best productions. :slightly_smiling_face:
 
@@ -145,7 +145,7 @@ There were lots of entries but we ended up being ranked fairly late and amongst 
 </div>
 
 As the demo loaded and started playing, the audio sounded pretty broken and glitchy, crap, not much to be done now...
-Thankfully, the issue cleared out after a few seconds and no further problem occurred, phew.
+Thankfully, the issue cleared up after a few seconds and no further problem occurred, phew.
 
 And we ended up 4th! Just short of the podium...
 
