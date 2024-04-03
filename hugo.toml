@@ -89,7 +89,7 @@ url = "https://twitter.com/guitio2002"
 
 [[params.socialIcons]]
 name = "mastodon"
-url = "https://mastodon.gamedev.place/home"
+url = "https://mastodon.gamedev.place/@gboisse"
 
 [[params.socialIcons]]
 name = "github"
