@@ -1,5 +1,5 @@
 ---
-slug: road-to-revision-2023
+slug: revision-2023
 title: Road to Revision 2023
 date: 2024-04-01
 author: Guillaume Boissé
@@ -51,7 +51,7 @@ Unfortunately the output geometry ended up being way too tessellated resulting i
 This was too much especially for our lighting, which is nearly entirely ray traced using some GPU-based software ray tracer.
 To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific shading features making the scene very difficult to export in any usable way. :slightly_frowning_face:
 
-At this point, we thankfully started getting the help of Naël, a friend of Made, who was both able and willing to spend some time fixing the content.
+At this point, we thankfully started getting the help of [Naël](https://demozoo.org/sceners/49100/), a friend of Made, who was both able and willing to spend some time fixing the content.
 This brought us to a fully working city scene made of ~300k triangles and correct looking materials.
 Thanks Naël!
 
