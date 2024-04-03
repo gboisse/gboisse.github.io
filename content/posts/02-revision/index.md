@@ -74,7 +74,7 @@ I took this as an opportunity to add some more statistics to the engine for both
 Indeed, I realised that our shadow [FBOs](https://en.wikipedia.org/wiki/Framebuffer_object), used for rendering the [shadow maps](https://en.wikipedia.org/wiki/Shadow_mapping), were being re-created every time a light would turn on or off.
 
 This was initially designed as an optimisation, where a light source with null emission wouldn't draw shadow maps, since it wouldn't contribute to the image anyway.
-But we had flickering lights in our content, which in turn was triggering thousands of FBO destruction and creation events resulting in the heavy stuttering we had observed.
+But we had flickering lights in our content, which in turn were triggering thousands of FBO destruction and creation events resulting in the heavy stuttering we had observed.
 Thankfully, once located, the error was trivial to fix and I was now able to witness a solid 99+% GPU usage all throughout the opening shot. :slightly_smiling_face:
 
 <div style="text-align: center;">
