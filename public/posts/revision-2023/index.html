@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Road to Revision 2023 | Guillaume&#39;s graphics blog</title>
+<meta property="og:title" content="Road to Revision 2023 | Guillaume&#39;s graphics blog" />
+<meta name="twitter:title" content="Road to Revision 2023 | Guillaume&#39;s graphics blog" />
+<meta itemprop="name" content="Road to Revision 2023 | Guillaume&#39;s graphics blog" />
+<meta name="application-name" content="Road to Revision 2023 | Guillaume&#39;s graphics blog" />
+<meta property="og:site_name" content="Guillaume&#39;s graphics blog" />
+
+<meta name="description" content="The making of a PC demo for the Revision 2023 demoparty.">
+<meta itemprop="description" content="The making of a PC demo for the Revision 2023 demoparty." />
+<meta property="og:description" content="The making of a PC demo for the Revision 2023 demoparty." />
+<meta name="twitter:description" content="The making of a PC demo for the Revision 2023 demoparty." />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="https://gboisse.github.io" />
+  <meta property="og:image" content="https://gboisse.github.io" />
+  <meta name="twitter:image" content="https://gboisse.github.io" />
+  <meta name="twitter:image:src" content="https://gboisse.github.io" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2024-04-08T00:00:00Z />
+    <meta property="article:published_time" content=2024-04-08T00:00:00Z />
+
+    
+    <meta property="og:article:author" content="Guillaume boissé" />
+    <meta property="article:author" content="Guillaume boissé" />
+    <meta name="author" content="Guillaume boissé" />
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Road to Revision 2023",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2024-04-08",
+        "description": "The making of a PC demo for the Revision 2023 demoparty.",
+        "wordCount":  1299 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2024-04-08",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Guillaume\u0027s graphics blog"
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.113.0">
+
+    
+
+    <link rel="canonical" href="https://gboisse.github.io/posts/revision-2023/">
+    <link href="/style.min.41175b050032d7b140ed7b503e6724d0166055787dc68ff6fb7e4d5d7b9aebf1.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="https://gboisse.github.io/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<script src="/js/medium-zoom.min.js"></script>
+
+    <meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    </head>
+<body data-theme = "dark" class="notransition">
+
+<script src="/js/theme.min.8961c317c5b88b953fe27525839672c9343f1058ab044696ca225656c8ba2ab0.js" integrity="sha256-iWHDF8W4i5U/4nUlg5ZyyTQ/EFirBEaWyiJWVsi6KrA="></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="https://gboisse.github.io/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/">
+                        Home
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/posts/">
+                        Posts
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        About
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Road to Revision 2023</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2024-04-08T00:00:00&#43;00:00" itemprop="datePublished"> 8 Apr 2024 </time>
+                </div></header>
+            <div class="page-content">
+                <div style="text-align: justify">
+<p>Back in 2021, I got in touch with <a href="https://www.pouet.net/user.php?who=98709">Made</a> in the hope that we could join our efforts in creating a PC demo for <a href="https://2023.revision-party.net/">Revision</a>.
+Made has been making demos for years and had recently won two Revision parties in that category, an impressive feat.
+So I sent him a couple of renders I made with my personal engine hoping that&rsquo;d get him excited enough&hellip;</p>
+<p>He accepted pretty much instantly, so we started talking about various creative ideas and quickly settled on a concept that he had on the backburner.
+Shortly after this, we had a nice storyboard. 🙂</p>
+<div style="text-align: center;">
+<p><img src="/reality-check-storyboard.png" alt="reality-check-storyboard">
+<em>Final storyboard for &ldquo;Reality Check&rdquo;.</em></p>
+</div>
+<p>Pretty soon afterwards, we got joined by Miguel, a.k.a., <a href="https://www.pouet.net/user.php?who=106515">BevelledApe</a>, who was willing to handle the modelling and texturing side of things (and there was lots to do on that front!).</p>
+<p>From this point on, everybody started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was really happening.</p>
+<p>Towards the end of 2022, we arrived at a point where it seemed like most of the engine features that we&rsquo;d need were implemented and working.
+On the visual side however, besides some nice Blender renders, we still didn&rsquo;t have much to show for&hellip;</p>
+<div style="text-align: center;">
+<p><img src="/reality-check-miguel.jpg" alt="reality-check-miguel">
+<em>Miguel, a.k.a., <a href="https://www.pouet.net/user.php?who=106515">BevelledApe</a>, in full demo mode at the Bilbao flat.</em></p>
+</div>
+<p>&hellip; until the start of March 2023!
+It started to become clear that if we were to release anything, something had to happen.
+So we organised for everyone to meet up for a full week at a flat in beautiful Bilbao.</p>
+<p>This week turned out to be key in kicking off the production;
+we made great progress on the opening sequence and got a much better flow for working all together.
+We were still seriously behind on most shots however, with the deadline now less than a month away&hellip;</p>
+<p>In particular, the city shots were turning out to be troublesome;
+we had purchased some city plugin hoping it&rsquo;d be enough to generate the scene.
+Unfortunately the output geometry ended up being way too tessellated resulting in a total of over 23 million triangles.
+This was too much especially for our lighting, which is nearly entirely ray traced using some GPU-based software ray tracer.
+To make matters worse, the materials on the buildings were a complete mess, relying on many Blender-specific shading features making the scene very difficult to export in any usable way. 🙁</p>
+<p>At this point, we thankfully started getting the help of <a href="https://demozoo.org/sceners/49100/">Naël</a>, a friend of Made, who was both able and willing to spend some time fixing the content.
+This brought us to a fully working city scene made of ~300k triangles and correct looking materials.
+Thanks Naël!</p>
+<div style="text-align: center;">
+<p><img src="/city-shot.jpg" alt="city-shot">
+<em>City scene finally imported and rendered correctly.</em></p>
+</div>
+<p>Things were starting to look pretty good and Made and myself could finish up the final bits of color grading for the opening sequence working together in some cafe on the last day of our Bilbao stay.
+With this, we had at least fully completed the first third of our production&hellip;</p>
+<p>&hellip; until I realised we were running into serious performance issues.
+The framerate would start stuttering strongly and erratically throughout the sequence.
+We initially put that onto my laptop&rsquo;s GPU throttling under the load (and it was getting pretty hot indeed).
+But the same issue was still showing on some powerful desktop PC back at home&hellip; crap. 😕</p>
+<p>I took this as an opportunity to add some more statistics to the engine for both resource and memory usage, which helped in identifying the culprit for the stuttering.
+Indeed, I realised that our shadow <a href="https://en.wikipedia.org/wiki/Framebuffer_object">FBOs</a>, used for rendering the <a href="https://en.wikipedia.org/wiki/Shadow_mapping">shadow maps</a>, were being re-created every time a light would turn on or off.</p>
+<p>This was initially designed as an optimisation, where a light source with null emission wouldn&rsquo;t draw shadow maps, since it wouldn&rsquo;t contribute to the image anyway.
+But we had flickering lights in our content, which in turn were triggering thousands of FBO destruction and creation events resulting in the heavy stuttering we had observed.
+Thankfully, once located, the error was trivial to fix and I was now able to witness a solid 99+% GPU usage all throughout the opening shot. 🙂</p>
+<div style="text-align: center;">
+<p><img src="/reality-check-gpu-utilisation.jpg" alt="reality-check-gpu-utilisation">
+<em>No more stuttering, smooth sailing from now on?</em></p>
+</div>
+<p>Things were looking good!<br>
+Until we started putting together the final package&hellip;</p>
+<p>The demo was about 3GiB in size and was taking over 3 minutes to load.
+Furthermore, the VRAM usage was crazy high, requiring a total of more than 12GiB, making it impossible to run on my laptop&rsquo;s aging GTX 1060.
+I had assumed we weren&rsquo;t really going to need any form of texture compression, but it was becoming clear that this assumption was in fact incorrect.</p>
+<p>So I started adding <a href="https://en.wikipedia.org/wiki/S3_Texture_Compression">block compression</a> support in anger with less than a week to go before the start of Revision.
+Furthermore, I deferred the loading of the textures until after all assets had been processed;
+this allowed going wide across every single image inside the demo for full multi-threaded texture loading, which helped bring the loading time down to about a minute.</p>
+<p>Finally, we performed lots of asset cleaning directly at the party place, sizing down textures and compressing them to jpegs, which left us with a package size of ~600MiB while our VRAM usage went down to ~3GiB.
+This could be improved further for sure, but at that point, we were well out of time&hellip;</p>
+<p>Meanwhile, Made was finishing work with <a href="https://www.pouet.net/user.php?who=288">med</a> on completing the music, so we could start syncing and locking the scenes timings.
+That&rsquo;s when we realised that the pacing wasn&rsquo;t great during the second part of the demo.
+After aligning the content to the song&rsquo;s structure, the transitions between shots felt too long&hellip;
+So we went ahead and decided to add a brand new scene to fix things. 🙂</p>
+<div style="text-align: center;">
+<p><img src="/last-minute-scene.jpg" alt="last-minute-scene">
+<em>Impromptu scene put together right before the deadline.</em></p>
+</div>
+<p><br>
+At this point, the deadline was only hours away, so we decided to stop tweaking and hand in the demo as it was.
+We uploaded it to a USB stick and brought that over to the organisers so we could test on the compo machine and make sure everything was working fine.</p>
+<p>That&rsquo;s when we found out that the demo was simply failing to launch&hellip;</p>
+<div style="text-align: center;">
+<p><img src="/reality-check-error.jpg" alt="reality-check-error">
+<em>The demo wouldn&rsquo;t even launch on the compo machine&hellip;</em></p>
+</div>
+<p>I&rsquo;d be lying if I&rsquo;d say I didn&rsquo;t feel a little bit of stress at that moment.
+It started dawning on me that without a fix for this, we may as well have no production at all&hellip;</p>
+<p>My first immediate thought was to blame the error on some Windows 11 issue, but nope, the organisers were indeed using a Windows 10 machine, crap.
+The message also wasn&rsquo;t indicative of any missing dll and our various google searching efforts were not returning any particularly useful answer&hellip;</p>
+<p>At this point, I got some sort of inspiration;
+I decided to try and rebuild the demo using the latest version of Visual Studio (i.e., 2022 instead of 2017, which I tend to stick with)&hellip; and things magically worked!
+Phew&hellip;</p>
+<p>The demo compo itself was very long with the total number of entries accidentally spoiled beforehand due to some technical blunder.
+So we went to have some rest at the hotel and came back just in time for the start of the PC compo.
+There were lots of entries but we ended up being ranked fairly late and amongst the best productions. 🙂</p>
+<div style="text-align: center;">
+<p><img src="/reality-check-entry.jpg" alt="reality-check-entry">
+<em>Positioned 36th out of 41 entries, not bad!</em></p>
+</div>
+<p>As the demo loaded and started playing, the audio sounded pretty broken and glitchy, crap, not much to be done now&hellip;
+Thankfully, the issue cleared up after a few seconds and no further problem occurred, phew.</p>
+<p>And we ended up 4th! Just short of the podium&hellip;</p>
+</div>
+
+            </div>
+        </article>
+        <script>mediumZoom(document.querySelectorAll('img'), { background: "#434648" })</script><hr style="margin-top: 40px; margin-bottom: 40px;" />
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-gboisse-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://twitter.com/guitio2002" target="_blank" rel="noopener noreferrer me"
+    title="Twitter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+    </path>
+</svg>
+</a>
+<a href="https://mastodon.gamedev.place/@gboisse" target="_blank" rel="noopener noreferrer me"
+    title="Mastodon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M21.58 13.913c-.29 1.469-2.592 3.121-5.238 3.396-1.379.184-2.737.368-4.185.276-2.368-.092-4.237-.551-4.237-.551 0 .184.014.459.043.643.308 2.294 2.317 2.478 4.22 2.57 1.922 0 3.633-.46 3.633-.46l.079 1.653s-1.344.734-3.738.918c-1.32.091-2.96-.092-4.869-.551-4.14-1.102-4.853-5.507-4.961-10.005-.034-1.285-.013-2.57-.013-3.58 0-4.589 3-5.966 3-5.966 1.513-.734 4.11-1.01 6.808-1.01h.067c2.699 0 5.296.276 6.81 1.01 0 0 3 1.377 3 5.967 0 0 .037 3.304-.419 5.69"
+        stroke="currentColor" />
+    <path
+        d="M17.832 8.633v5h-1.978V8.78c0-1.023-.43-1.542-1.29-1.542-.95 0-1.427.616-1.427 1.834v2.655H11.17V9.072c0-1.218-.476-1.834-1.427-1.834-.86 0-1.29.52-1.29 1.542v4.852H6.475V8.633c0-1.022.26-1.834.782-2.434.538-.6 1.243-.909 2.118-.909 1.012 0 1.779.39 2.286 1.169l.492.827.493-.827c.507-.78 1.274-1.169 2.286-1.169.875 0 1.58.308 2.118.909.522.6.782 1.412.782 2.434"
+        fill="currentColor" stroke="none" />
+</svg>
+</a>
+<a href="https://github.com/gboisse" target="_blank" rel="noopener noreferrer me"
+    title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+</div>
+    <small class="footer_copyright">
+        © 2024 Guillaume Boissé.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noreferrer noopener">Hugo blog awesome</a>
+        theme on
+        <a href="https://gohugo.io" target="_blank" rel="noreferrer noopener">Hugo</a>.
+    </small>
+</footer><a href="#" title="Go to top" id="totop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960">
+    <path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197Z"/>
+</svg>
+
+</a>
+
+
+    
+
+
+
+
+    
+    
+        
+    
+
+    
+    
+        
+    
+
+
+
+    
+    <script src="https://gboisse.github.io/js/main.min.35f435a5d8eac613c52daa28d8af544a4512337d3e95236e4a4978417b8dcb2f.js" integrity="sha256-NfQ1pdjqxhPFLaoo2K9USkUSM30&#43;lSNuSkl4QXuNyy8="></script>
+
+    
+
+</body>
+</html>
