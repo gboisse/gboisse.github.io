@@ -1,10 +1,9 @@
 ---
 slug: revision-2023
 title: Road to Revision 2023
-date: 2024-04-01
+date: 2024-04-08
 author: Guillaume Boissé
 description: The making of a PC demo for the Revision 2023 demoparty.
-draft: true
 ---
 
 <div style="text-align: justify">
