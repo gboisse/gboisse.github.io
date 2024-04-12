@@ -1,6 +1,6 @@
 ---
 slug: hello-world
-title: Hello, World!
+title: Hello, world!
 date: 2023-06-18
 author: Guillaume Boissé
 description: First post on my blog.
