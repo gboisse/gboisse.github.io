@@ -23,7 +23,7 @@ As a teaser, here's a screenshot of the tool running our [Revision 2023](https:/
 ### A bit of background
 
 I started thinking about this project back in 2019 with the aim of releasing some PC demo productions.
-I had heard of the [demoscene](https://en.wikipedia.org/wiki/Demoscene) for the first time about four years earlier through some coworkers at Sony and it gradually grew on me to the point that I too wanted to participate.
+I had heard of the [demoscene](https://en.wikipedia.org/wiki/Demoscene) for the first time a few years earlier through some coworkers at Sony and it gradually grew on me to the point that I too wanted to participate.
 I really wanted to be able to team up with artists and designers for making these rather than, say, other programmers or trying to complete a production on my own.
 This seemed like a better way to reach a higher visual bar as well as being more entertaining overall. :slightly_smiling_face:
 
