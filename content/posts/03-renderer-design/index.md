@@ -38,4 +38,7 @@ Another important goal for this design was to provide a flexible rendering pipel
 This was initially for enabling my personal research and experiments, and later on went on to be very useful for turning the engine into a demoengine. :slightly_smiling_face:
 -->
 
+Mention about ray tracing, "array of texture arrays"-style bindless texturing, etc.
+Or rather, explain about the batching and link into how this is a great setup for ray tracing. :slightly_smiling_face:
+
 </div>
