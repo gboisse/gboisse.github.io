@@ -24,9 +24,9 @@ Nevertheless, I think some of the design decisions remain interesting even today
 
 ...
 
-### Renderer pipeline
+### Rendering pipeline
 
-<div style="text-align: center;">
+<div style="text-align: center; margin-top: 8pt;">
 
 <img src="/forward-plus.jpg" width="49%" />
 <img src="/forward-lights.jpg" width="49%" /><br/>
