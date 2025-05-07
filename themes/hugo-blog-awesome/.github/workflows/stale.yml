@@ -5,9 +5,7 @@
 # https://github.com/actions/stale
 name: Mark stale issues and pull requests
 
-on:
-  schedule:
-  - cron: '31 22 * * *'
+on: workflow_dispatch
 
 jobs:
   stale:
@@ -18,11 +16,11 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/stale@v8
+    - uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9.0.0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        days-before-issue-stale: 10
-        days-before-pr-stale: 10
+        days-before-issue-stale: 21
+        days-before-pr-stale: 21
         days-before-close: 7
         stale-issue-message: 'This issue has been marked stale due to inactivity. It will auto-close in 7 days without an update.'
         close-issue-message: 'This issue was auto-closed due to inactivity.'

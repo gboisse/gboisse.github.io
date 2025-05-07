@@ -16,7 +16,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Update PRs with conflict labels
-        uses: eps1lon/actions-label-merge-conflict@releases/2.x
+        uses: eps1lon/actions-label-merge-conflict@1df065ebe6e3310545d4f4c4e862e43bdca146f0 # releases/2.1.0
         with:
           dirtyLabel: "conflicts"
           #removeOnDirtyLabel: "PR: ready to ship"
@@ -31,7 +31,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: codelytv/pr-size-labeler@v1
+      - uses: codelytv/pr-size-labeler@1c3422395d899286d5ee2c809fd5aed264d5eb9b # v1.10.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           xs_label: 'size/xs'

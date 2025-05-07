@@ -10,8 +10,10 @@ code {
   word-wrap: normal;
   font-size: inherit;
 }
-
+// Inline code
+li>code,
 p > code {
+  white-space: pre-wrap;
   font-size: 0.9em;
   padding: 1px 3px;
   position: relative;

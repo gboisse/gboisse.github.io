@@ -2,6 +2,12 @@
     {{- partial "meta/main.html" . }}
     {{- hugo.Generator }}
 
+    {{/* Open Graph tags */}}
+    {{ template "_internal/opengraph.html" . }}
+
+    {{/* Twitter Card tags */}}
+    {{ template "_internal/twitter_cards.html" . }}
+
     {{/* Canonical link, RSS */}}
 
     <link rel="canonical" href="{{ .Permalink }}">
@@ -37,9 +43,13 @@
 
     {{- if or .Params.math .Site.Params.math }}{{ partial "helpers/katex.html" . -}}{{- end -}}
 
-    {{/* Google analytics script. See config.toml to enable/disable this. */}}
+    {{/* Google analytics script. See hugo.toml to enable/disable this. */}}
     {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
     {{ template "_internal/google_analytics.html" . }}
     {{- end -}}
 
+    {{/* Extend head with user supplied partial */}}
+    {{ if templates.Exists "partials/custom-head.html" }}
+      {{ partial "custom-head.html" . }}
+    {{ end }}
 </head>
