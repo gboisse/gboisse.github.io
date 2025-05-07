@@ -1,4 +1,4 @@
 ---
-title: "Home"
-author : "Guillaume Boissé"
+title: Home
+author: Guillaume Boissé
 ---

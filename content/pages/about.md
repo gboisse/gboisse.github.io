@@ -1,8 +1,6 @@
 ---
 title: About
-date: 2023-06-18
 author: Guillaume Boissé
-description: Hugo, the world's fastest framework for building websites
 ---
 
 <div style="text-align: center;">
