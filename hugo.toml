@@ -88,6 +88,10 @@ name = "twitter"
 url = "https://twitter.com/guitio2002"
 
 [[params.socialIcons]]
+name = "bluesky"
+url = "https://bsky.app/profile/gboisse.bsky.social"
+
+[[params.socialIcons]]
 name = "mastodon"
 url = "https://mastodon.gamedev.place/@gboisse"
 
