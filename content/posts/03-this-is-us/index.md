@@ -9,14 +9,15 @@ draft: true
 
 <div style="text-align: justify">
 
-A few months ago, we released our latest demoscene production called "This is Us", go and get it over [here](https://www.pouet.net/prod.php?which=103999)!
-In this article, I'd like to dive into some of the technical details that I believe are interesting.
+after wrapping our previous production, i started thinking about what we could do next.
+i really wanted to move towards path traced lighting as this has always been a fascination of mine.
+furthermore, our previous production was fairly static, moving from one mostly non-moving scene to the next, so i wanted to give this one some more motion and more abstract effects.
 
-<div style="text-align: center;">
+all in all, i set up on the following "effects" that i wanted our production to showcase, hopefully wrapped up in some story of sort:
+- path tracing
+- volumetric shadowing
+- fluid simulation
 
-![reality-check-storyboard](/this-is-us.jpg)
-*"This is Us" PC demo presented at [Revision 2025](https://www.pouet.net/party.php?which=1550&when=2025).*
-
-</div>
+i'll go over these in this post and hope you can take something out of these experiments:)
 
 </div>
