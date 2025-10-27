@@ -9,7 +9,7 @@ draft: true
 
 <div style="text-align: justify">
 
-About 6 months ago, we released a PC production at [Revision 2025](https://www.pouet.net/party.php?which=1550&when=2025).
+About 6 months ago, we presented a PC demo production at [Revision 2025](https://www.pouet.net/party.php?which=1550&when=2025).
 If you haven't seen it yet, go watch it [here](https://www.youtube.com/watch?v=W7Om9rf0qKc). :slightly_smiling_face:
 
 <div style="text-align: center;">
@@ -19,7 +19,7 @@ If you haven't seen it yet, go watch it [here](https://www.youtube.com/watch?v=W
 
 </div>
 
-In this post, I thought I'd go through some of the graphics techniques that were showcased in the demo and that I think are exciting.
+In this post, I thought I'd go through some of the graphics techniques that were showcased in the release and that I think are exciting.
 
 ### Path tracing
 
@@ -60,7 +60,7 @@ Here, we'll be using <a href="https://arxiv.org/abs/1902.05942">spatial hashing<
 1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
    1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value.
-   1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution as well as spawning a "bounce ray" (using cosine-weighted sampling for instance).
+   1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as spawning a "bounce ray" (using cosine-weighted sampling for instance).
    1. Whatever the bounce ray hits, check whether a cell exists; if so, use its radiance as contribution, if not, do nothing.
 
 A great property of this approach is that we only trace one "bounce ray" per affected cell, while still getting a fairly decent approximation of "infinite" multiple bounces (temporally recurrent, in fact).
@@ -85,7 +85,7 @@ And specifically, the "GI" [variant](https://research.nvidia.com/publication/202
 Covering the depths and details of ReSTIR would make for a blog post of its own, so suffice to say that the approach chosen here, unsurprisingly, aims at minimizing the number of rays being cast.
 
 A cool trick for this was proposed by the folks over at [Traverse Research](https://blog.traverseresearch.nl/dynamic-diffuse-global-illumination-b56dc0525a0a).
-They made the point that blablabla ao and use this property not against the lighting directly but as a mechanism to compare and weight the validity of combining various reservoirs.
+They pointed out that blablabla ao and use this property not against the lighting directly but as a mechanism to compare and weight the validity of combining various reservoirs.
 If the reservoirs' AO matches closely, the probability of combining them increases, otherwise, it is reduced.
 This greatly improves the preservation of contact shadows and details, at no additional ray tracing cost. :slightly_smiling_face:
 
