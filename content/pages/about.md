@@ -13,6 +13,6 @@ author: Guillaume Boissé
 
 Hi there, my name is Guillaume and I am a graphics programmer at AMD in the [Advanced Rendering Research](https://gpuopen.com/advanced-rendering-research/) group.
 
-This site is dedicated to my personal projects, hope you find it useful!
+This site is dedicated to my personal projects, I hope you find it useful!
 
 </div>
