@@ -26,7 +26,7 @@ In this post, I thought I'd go through some of the graphics techniques that were
 Arguably, this is the biggest one. :slightly_smiling_face:
 
 One thing to keep in mind here though is that the engine I'm using for these demos is still based on OpenGL, which means that hardware-accelerated ray tracing isn't an option...
-Not a big issue, as the engine supports since its inception (circa 2015-16) an acceleration structure for ray/triangle intersection loosely based on this [reference](https://directtovideo.wordpress.com/2013/05/08/real-time-ray-tracing-part-2/) initially, which I later extended to [irregular grids](https://graphics.cg.uni-saarland.de/papers/perard-grids-preprint.pdf).
+Not a big issue, as the engine supports since its inception (circa 2015-16) an acceleration structure for ray/triangle intersection loosely based on this [reference](https://directtovideo.wordpress.com/2013/05/08/real-time-ray-tracing-part-2/) initially, which was later extended to [irregular grids](https://graphics.cg.uni-saarland.de/papers/perard-grids-preprint.pdf).
 
 So, this calls for a somewhat different thinking from the [current](https://www.youtube.com/watch?v=Tk7Zbzd-6fs) [path tracing](https://www.youtube.com/watch?v=waizZ-UZr7U) [developments](https://www.youtube.com/watch?v=xHQMehFJ0AY) that can be seen in games for instance.
 Specifically, the ray count really should be kept as low as possible so the framerate remains at 60Hz...
@@ -40,18 +40,55 @@ Specifically, the ray count really should be kept as low as possible so the fram
 
 ... which is a bit of a challenge when tackling path tracing.
 In short, path tracing requires you to perform a random choice every time you hit a surface, explore the direction resulting from that random choice (using ray tracing), only to then repeat these same steps on the next hit!
-Not only does this typically equate to lots of expensive rays being traced, the end result is also generally unusably noisy. :confused:
+Not only does this typically equate to lots of expensive rays being needed, the end result is also generally unusably noisy. :confused:
 
 Enters radiance caching.
 
-The idea behind radiance caching is to terminate the paths early into a data structure storing an approximation of the scene's lighting.
+The idea behind radiance caching is to terminate the paths early into a data structure that stores an approximation of the scene's lighting.
 Not only is the performance improved due to the traces being shallower, the noise is also greatly reduced thanks to the filtering offered by the data structure.
 
 <div style="text-align: center;">
 
 <img src="/pt-00.jpg" width="49%" />
 <img src="/pt-01.jpg" width="49%" /><br/>
-<em>Test renders with and without radiance caching.</em>
+<em>Test renders without and with radiance caching.</em>
+
+</div>
+<br/>
+Here, we'll be using <a href="https://arxiv.org/abs/1902.05942">spatial hashing</a> to generate the structure and the update is as follows:
+
+1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
+1. Every time the cache is looked up, do the following:
+   1. Hash the position and normal at the hit point to build a list of all affected cells (these may be new cells). Make sure to reset the decay back to its maximum value.
+   1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution as well as spawning a "bounce ray" (using cosine-weighted sampling for instance).
+   1. Whatever the bounce ray hits, check whether a cell exists; if so, use its radiance as contribution, if not, do nothing.
+
+A great property of this approach is that we only need to trace one "bounce ray" per affected cell but still get a fairly decent approximation of "infinite" multiple bounces (temporally recurrent, in fact).
+This gives us a great knob to balance quality vs. performance.
+Indeed, using smaller cells we achieve greater fidelity but at higher cost.
+Conversely with larger cells, we introduce more bias but our path tracer now runs much faster.
+This property can easily be tweaked on a per-scene basis to obtain the best results possible. :slightly_smiling_face:
+
+Still, the image remains fairly noisy.
+ReSTIR blablabla
+
+<div style="text-align: center;">
+
+<img src="/pt-01.jpg" width="49%" />
+<img src="/pt-02.jpg" width="49%" /><br/>
+<em>Test renders without and with ReSTIR.</em>
+
+</div>
+<br/>
+blablabla
+
+Finally, we finish up with some simple spatiotemporal denoising.
+
+<div style="text-align: center;">
+
+<img src="/pt-03.jpg" width="49%" />
+<img src="/pt-04.jpg" width="49%" /><br/>
+<em>Denoised diffuse and specular signals.</em>
 
 </div>
 <br/>
@@ -60,7 +97,7 @@ blablabla
 ### Fluid simulation
 
 This is an area I've been wanting to explore further for quite some time.
-Still a lot more to explore, but I'm quite happy with what we've been able to show... the current state of it...
+While there's still a lot more to explore for me (hopefully in some not so distant future production...), I'm quite happy with what we've been able to show... the current state of it...
 
 ### Miscellaneous
 
