@@ -40,11 +40,11 @@ Specifically, the ray count really should be kept as low as possible so the fram
 
 ... which is a bit of a challenge when tackling path tracing.
 In short, path tracing requires you to perform a random choice every time you hit a surface, explore the direction resulting from that random choice (using ray tracing), only to then repeat these same steps on the next hit!
-Not only does this typically equate to lots of expensive rays being cast, the end result is also generally unusably noisy. :confused:
+Not only does this typically equate to lots of expensive rays being cast, but the end result is also generally unusably noisy. :confused:
 
 Enters radiance caching.
 
-The idea behind radiance caching is to terminate the paths early into a data structure that stores an approximation of the scene's lighting.
+The idea behind radiance caching is to terminate the paths early into a data structure that approximates the scene's lighting.
 Not only is the performance improved due to the traces being shallower, the noise is also greatly reduced thanks to the filtering offered by the data structure.
 
 <div style="text-align: center;">
