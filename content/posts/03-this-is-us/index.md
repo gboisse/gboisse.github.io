@@ -39,7 +39,7 @@ Specifically, the ray count really should be kept as low as possible, so that th
 </div>
 
 ... which is a bit of a challenge when tackling path tracing.
-In short, path tracing requires you to perform a random choice every time you hit a surface, explore the direction resulting from that random choice (using ray tracing), only to then repeat these same steps on the next hit!
+In short, path tracing requires you to perform a random choice every time you hit a surface, explore the direction resulting from that random choice (using ray tracing), only to then repeat these same steps on the next hit.
 Not only does this typically equate to lots of expensive rays being cast, but the end result is also generally unusably noisy. :confused:
 
 Enters radiance caching.
@@ -108,7 +108,7 @@ Specifically, "BRDF-based ratio estimator" by <a href="https://www.youtube.com/w
 <div style="text-align: center;">
 
 ![pt-shot](/pt-05.jpg)
-*The composited image... finally.*
+*The composited image... finally!*
 
 </div>
 
@@ -122,6 +122,13 @@ blablabla
 Spatial hashing again!
 
 blablabla
+
+<div style="text-align: center;">
+
+![sph-bunny](/sph-bunny.jpg)
+*Some Marching cube'd fluid thrown onto the Stanford bunny.*
+
+</div>
 
 Dilate the tiles...
 
