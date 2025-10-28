@@ -67,7 +67,7 @@ A great property of this approach is that we only trace one "bounce ray" per aff
 This turns out to be a great knob for balancing quality vs. performance.
 Indeed, using smaller cells, we achieve greater fidelity but at higher cost.
 Conversely with larger cells, we introduce more bias but our path tracer now runs much faster.
-This property can easily be tweaked on a per-scene basis to obtain the best results possible. :slightly_smiling_face:
+This property can easily be tweaked on a per-scene basis to obtain the best possible results. :slightly_smiling_face:
 
 Still, the image remains fairly noisy.
 
@@ -139,8 +139,8 @@ blablabla
 This post is pretty long already but I thought I'd still briefly mention how the lighting (and shadows specifically) are computed for particles.
 
 This time, we'll want to traverse the grid many times and in many different directions (a technique known as "ray marching").
-Spatial hashing isn't a good fit here, as the overhead would simply kill the performance.
-So, another approach is required.
+Spatial hashing isn't a good fit here, as the overhead of accessing each subsequent cell would simply kill the performance.
+<!--So, another approach is required.-->
 
 blablabla
 
