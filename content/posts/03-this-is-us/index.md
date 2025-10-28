@@ -3,7 +3,7 @@ slug: this-is-us
 title: Making "This is Us"
 date: 2025-10-27
 author: Guillaume Boissé
-description: On the making of a PC demo.
+description: Behind the scenes of a modern PC demo.
 draft: true
 ---
 
@@ -121,7 +121,7 @@ blablabla
 
 ### Miscellaneous
 
-This post is already pretty long but I thought I'd still briefly mention how the lighting (and shadows specifically) are computed for particles.
+This post is pretty long already but I thought I'd still briefly mention how the lighting (and shadows specifically) are computed for particles.
 
 blablabla
 
