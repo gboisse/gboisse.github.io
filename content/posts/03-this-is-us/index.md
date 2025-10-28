@@ -25,11 +25,11 @@ In this post, I thought I'd go through some of the graphics techniques that were
 
 Arguably, this is the biggest one. :slightly_smiling_face:
 
-One thing to keep in mind here though is that the engine I'm using for these demos is still based on OpenGL, which means that hardware-accelerated ray tracing isn't an option...
+One thing to keep in mind though is that the engine used here is still based on OpenGL, which means that hardware-accelerated ray tracing isn't an option... (at least not until someone makes an extension for it, akin to the recently merged mesh shaders [extension](https://www.phoronix.com/news/OpenGL-Mesh-Shader-Added))
 Not a big issue, as the engine supports since its inception (circa 2015-16) an acceleration structure for ray/triangle intersection loosely based on this [reference](https://directtovideo.wordpress.com/2013/05/08/real-time-ray-tracing-part-2/) initially, although later extended to [irregular grids](https://graphics.cg.uni-saarland.de/papers/perard-grids-preprint.pdf).
 
 So, this calls for a somewhat different thinking from the [current](https://www.youtube.com/watch?v=Tk7Zbzd-6fs) [path tracing](https://www.youtube.com/watch?v=waizZ-UZr7U) [developments](https://www.youtube.com/watch?v=xHQMehFJ0AY) that can be seen in games for instance.
-Specifically, the ray count really should be kept as low as possible so the framerate remains at 60Hz...
+Specifically, the ray count really should be kept as low as possible, so that the framerate can remain at 60Hz...
 
 <div style="text-align: center;">
 
@@ -59,12 +59,12 @@ Here, we'll be using <a href="https://arxiv.org/abs/1902.05942">spatial hashing<
 
 1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
-   1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value.
-   1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as spawning a "bounce ray" (using cosine-weighted sampling for instance).
+   1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value. (If the cell was already estimated this frame, we can exit here.)
+   1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as for spawning a "bounce ray" (using cosine-weighted sampling for instance).
    1. Whatever the bounce ray hits, check whether a cell exists; if so, use its radiance as contribution, if not, do nothing.
 
 A great property of this approach is that we only trace one "bounce ray" per affected cell, while still getting a fairly decent approximation of "infinite" multiple bounces (temporally recurrent, in fact).
-This gives us a great knob to balance quality vs. performance.
+This turns out to be a great knob for balancing quality vs. performance.
 Indeed, using smaller cells, we achieve greater fidelity but at higher cost.
 Conversely with larger cells, we introduce more bias but our path tracer now runs much faster.
 This property can easily be tweaked on a per-scene basis to obtain the best results possible. :slightly_smiling_face:
@@ -82,14 +82,15 @@ And specifically, the "GI" [variant](https://research.nvidia.com/publication/202
 
 </div>
 <br/>
-Covering the depths and details of ReSTIR would make for a blog post of its own, so suffice to say that the approach chosen here, unsurprisingly, aims at minimizing the number of rays being cast.
+Covering the depths and details of ReSTIR would make for a post of its own, so suffice to say that the approach chosen here, unsurprisingly, aims at minimizing the number of rays being cast.
 
 A cool trick for this was proposed by the folks over at [Traverse Research](https://blog.traverseresearch.nl/dynamic-diffuse-global-illumination-b56dc0525a0a).
-They pointed out that blablabla ao and use this property not against the lighting directly but as a mechanism to compare and weight the validity of combining various reservoirs.
-If the reservoirs' AO matches closely, the probability of combining them increases, otherwise, it is reduced.
-This greatly improves the preservation of contact shadows and details, at no additional ray tracing cost. :slightly_smiling_face:
+They pointed out that one could simply retrieve an AO mask (short for "Ambient Occlusion") from the initial ray trace.
+This mask wouldn't be applied to the lighting directly, as is usually the case with AO, but rather used for weighting the validity of combining reservoirs.
+If the reservoirs' AO values match closely, the probability of combining them increases, otherwise, it is reduced.
+This greatly improves preservation of contact shadows and details, at no additional ray tracing cost. :slightly_smiling_face:
 
-Finally, we finish up with some simple spatiotemporal denoising.
+Finally, the image is cleaned up using some standard spatiotemporal denoising.
 The denoiser itself is fairly simple (and fast); use temporal reprojection when possible, fall back to spatial filtering when not.
 The number of accumulated temporal samples is stored in the alpha channel and is used to "fade away" the amount of spatial filtering as history becomes more reliable.
 
@@ -114,7 +115,9 @@ Specifically, "BRDF-based ratio estimator" by <a href="https://www.youtube.com/w
 ### Fluid simulation
 
 This is an area I've been wanting to dive further into for quite some time.
-While there's still a lot more to explore for me (hopefully in some not-so-distant future production...), I'm quite happy with what we've been able to show... the current state of it...
+While there's still a lot more to explore for me (hopefully in some not-so-distant future production...), I'm quite happy with what we've been able to show back in April.
+
+blablabla
 
 ### Miscellaneous
 
