@@ -108,7 +108,7 @@ Specifically, "BRDF-based ratio estimator" by <a href="https://www.youtube.com/w
 <div style="text-align: center;">
 
 ![pt-shot](/pt-05.jpg)
-*Our composited image... finally.*
+*The composited image... finally.*
 
 </div>
 
@@ -119,9 +119,21 @@ While there's still a lot more to explore for me (hopefully in some not-so-dista
 
 blablabla
 
+Spatial hashing again!
+
+blablabla
+
+Dilate the tiles...
+
+blablabla
+
 ### Miscellaneous
 
 This post is pretty long already but I thought I'd still briefly mention how the lighting (and shadows specifically) are computed for particles.
+
+This time, we'll want to traverse the grid many times and in many different directions (a technique known as "ray marching").
+Spatial hashing isn't a good fit here, as the overhead would simply kill the performance.
+So, another approach is required.
 
 blablabla
 
