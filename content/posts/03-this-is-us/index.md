@@ -117,6 +117,19 @@ Specifically, "BRDF-based ratio estimator" by <a href="https://www.youtube.com/w
 This is an area I've been wanting to dive further into for quite some time.
 While there's still a lot more to explore for me (hopefully in some not-so-distant future production...), I'm quite happy with what we've been able to show back in April.
 
+The setup I ended up with was mostly inspired by this post from [Morten Vassvik](https://bsky.app/profile/vassvik.bsky.social/post/3lb6j2wnmtk2k).
+The idea is to pre-fetch the neighboring information efficiently into LDS (short for "Local Data Share") by having all lanes cooperate to the operation.
+We can then synchronize the group and go at performing our computations with all the neighboring cells' information close by and ready for fast access. :slightly_smiling_face:
+
+In my scenario however, I was interested in dealing with particles and implementing [smoothed-particles hydrodynamics](https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics), or SPH for short.
+
+<div style="text-align: center;">
+
+![tiled-sph](/tiled-sph.gif)
+*Some early test of the tiled SPH approach.*
+
+</div>
+
 blablabla
 
 Spatial hashing again!
