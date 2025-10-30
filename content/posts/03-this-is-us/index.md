@@ -165,6 +165,14 @@ Finally, a bit of smoothing is applied by simply moving the vertices by a small 
 
 This post is pretty long already but I thought I'd still briefly mention how the lighting (and shadows specifically) are computed for particles.
 
+<div style="text-align: center;">
+
+<img src="/volshadows-00.jpg" width="49%" />
+<img src="/volshadows-01.jpg" width="49%" /><br/>
+<em>Without vs. with volumetric shadowing on particles.</em>
+
+</div>
+<br/>
 This time, we'll want to traverse the grid many times and in many different directions (a technique known as "ray marching").
 Spatial hashing isn't a good fit here, as the overhead of accessing each subsequent cell would simply kill the performance.
 <!--So, another approach is required.-->
