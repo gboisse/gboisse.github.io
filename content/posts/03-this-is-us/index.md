@@ -55,7 +55,7 @@ Not only is the performance improved due to the traces being shallower, the nois
 
 </div>
 <br/>
-Here, we'll be using <a href="https://arxiv.org/abs/1902.05942">spatial hashing</a> to generate the structure and the update is as follows:
+Here, we'll be using spatial hashing to generate the structure and the update is as follows:
 
 1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
@@ -117,11 +117,17 @@ Specifically, "BRDF-based ratio estimator" by <a href="https://www.youtube.com/w
 This is an area I've been wanting to dive further into for quite some time.
 While there's still a lot more to explore for me (hopefully in some not-so-distant future production...), I'm quite happy with what we've been able to show back in April.
 
-The setup I ended up with was mostly inspired by this post from [Morten Vassvik](https://bsky.app/profile/vassvik.bsky.social/post/3lb6j2wnmtk2k).
-The idea is to pre-fetch the neighboring information efficiently into LDS (short for "Local Data Share") by having all lanes cooperate to the operation.
+The setup I ended up with is mostly inspired by this post from [Morten Vassvik](https://bsky.app/profile/vassvik.bsky.social/post/3lb6j2wnmtk2k).
+The idea is to pre-fetch the neighboring data efficiently into LDS (short for "Local Data Share") by having all lanes cooperate to the operation.
 We can then synchronize the group and go at performing our computations with all the neighboring cells' information close by and ready for fast access. :slightly_smiling_face:
 
 In my scenario however, I was interested in dealing with particles and implementing [smoothed-particle hydrodynamics](https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics), or SPH for short.
+So I went ahead and started binning the particles into tiles of 4x4x4 cells.
+The tiles themselves are sparsely allocated using... spatial hashing, again!
+A very useful technique for sure.
+
+As part of the build process, I also generate a list of all tiles in the structure.
+My initial idea was to then dispatch one 4x4x4 group per tile for the solver, but due to the vastly varying number of particles in each tile, the performance was terrible...
 
 <div style="text-align: center;">
 
@@ -130,11 +136,16 @@ In my scenario however, I was interested in dealing with particles and implement
 
 </div>
 
-blablabla
+So instead, I divide each tile into a list of subtiles; for instance a tile with 150 particles in it gets broken into two subtiles of 64 particles and one subtile of 22, or three subtiles in total.
+All that's needed for addressing the subtiles is the tile index and corresponding subtile index (all packed into a single 32-bit integer in my case).
+I can now dispatch over all subtiles and go much more wide and even across the device. :slightly_smiling_face:
 
-Spatial hashing again!
+At the start of the shader, we then begin with performing the pre-fetching of the neighboring particle lists into a 6x6x6 multidimensional LDS array as well as picking the particles linearly based on the subtile index.
+From that point on, SPH can run pretty much unchanged from a regular implementation processing one particle per lane, but with much better performance.
 
-blablabla
+The final step on the fluid journey was meshing, that is, generating a list of triangles modelling the isosurface implicitly represented by the particles.
+For this purpose, my plan was to use the [Marching cubes](https://en.wikipedia.org/wiki/Marching_cubes) algorithm.
+But in order to run the algorithm, we must first derive a field from our set of particles...
 
 <div style="text-align: center;">
 
@@ -143,9 +154,12 @@ blablabla
 
 </div>
 
-Dilate the tiles...
+Use the same data structure.
+Subdivide each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a tweakable option of the algorithm).
+Compute the field value (and its derivatives!) for each of these new subcells.
+Do not forget to dilate the tiles.
 
-blablabla
+Finally, a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluid like.
 
 ### Miscellaneous
 
