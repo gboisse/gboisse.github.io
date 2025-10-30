@@ -121,12 +121,12 @@ The setup I ended up with was mostly inspired by this post from [Morten Vassvik]
 The idea is to pre-fetch the neighboring information efficiently into LDS (short for "Local Data Share") by having all lanes cooperate to the operation.
 We can then synchronize the group and go at performing our computations with all the neighboring cells' information close by and ready for fast access. :slightly_smiling_face:
 
-In my scenario however, I was interested in dealing with particles and implementing [smoothed-particles hydrodynamics](https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics), or SPH for short.
+In my scenario however, I was interested in dealing with particles and implementing [smoothed-particle hydrodynamics](https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics), or SPH for short.
 
 <div style="text-align: center;">
 
 ![tiled-sph](/tiled-sph.gif)
-*Some early test of the tiled SPH approach.*
+*Some early test of the tiled SPH approach using ½ million particles.*
 
 </div>
 
