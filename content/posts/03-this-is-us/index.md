@@ -159,17 +159,18 @@ Subdivide each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a 
 Compute the field value (and its derivatives!) for each of these new subcells.
 Do not forget to dilate the tiles.
 
-Finally, a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluid like.
+Finally, a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluidlike.
 
 ### Miscellaneous
 
-This post is pretty long already but I thought I'd still briefly mention how the lighting (and shadows specifically) are computed for particles.
+This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadows rather) are computed for particles.
 
 <div style="text-align: center;">
 
-<img src="/volshadows-00.jpg" width="49%" />
-<img src="/volshadows-01.jpg" width="49%" /><br/>
-<em>Without vs. with volumetric shadowing on particles.</em>
+<img src="/particle-volume-00.jpg" width="32%" />
+<img src="/particle-volume-01.jpg" width="32%" />
+<img src="/particle-volume-02.jpg" width="32%" /><br/>
+<em>From left to right: no occlusion, particle volume, shadowed particles.</em>
 
 </div>
 <br/>
@@ -178,5 +179,12 @@ Spatial hashing isn't a good fit here, as the overhead of accessing each subsequ
 <!--So, another approach is required.-->
 
 blablabla
+
+### Conclusion
+
+If you've made it all the way, congrats! :slightly_smiling_face:
+
+Regardless, I hope that you've found some of the information in this post to be interesting and/or inspiring.
+As for myself, I feel I'm just getting started, so watch this space.
 
 </div>
