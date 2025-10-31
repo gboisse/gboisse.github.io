@@ -161,16 +161,23 @@ This is done efficiently as a pre-pass to the field estimation.
 
 Finally, Marching cubes is run over the computed field and a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluidlike.
 
-### Miscellaneous
+### One last thing
 
-This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadows rather) are computed for particles.
+This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadows rather) are computed for the particles.
+A commonly-used technique for shadowing particle systems is known as [Deep Opacity Maps](https://www.cemyuksel.com/research/deepopacity/).
+These essentially extend traditional shadow maps with depth slices to handle the volumetric nature of the shadowing (required due to our particles being slightly transparent rather than fully opaque).
+
+In my case however, I want to be able to handle multiple light sources, which would require drawing multiple deep opacity maps (once for each light effectively), and envision eventually connecting the particles' lighting system to the path tracer described earlier.
+So, instead of dealing with each light individually, I'd rather create a single acceleration structure, which I could then use for all lights and, in the future, indirect lighting.
+
+I named this new data structure "particle volume" although in effect, all it really is, is a 3-dimensional density field...
 
 <div style="text-align: center;">
 
 <img src="/particle-volume-00.jpg" width="32%" />
 <img src="/particle-volume-01.jpg" width="32%" />
 <img src="/particle-volume-02.jpg" width="32%" /><br/>
-<em>From left to right: no occlusion, particle volume, shadowed particles.</em>
+<em>From left to right: no lighting, particle volume, shadowed particles.</em>
 
 </div>
 <br/>
@@ -185,6 +192,6 @@ blablabla
 If you've made it this far, congrats! :slightly_smiling_face:
 
 If not, I hope that you nevertheless found some of the information in this post to be useful and/or inspiring.
-As for myself, I feel I'm just getting started, so watch this space.
+As for myself, I feel I am just getting started, so watch this space.
 
 </div>
