@@ -174,15 +174,13 @@ I named this new data structure "particle volume" although in effect, all it rea
 
 <div style="text-align: center;">
 
-<img src="/particle-volume-00.jpg" width="32%" />
-<img src="/particle-volume-01.jpg" width="32%" />
-<img src="/particle-volume-02.jpg" width="32%" /><br/>
-<em>From left to right: no lighting, particle volume, shadowed particles.</em>
+![particle-volume](/particle-volume.gif)
+*Using the particle volume for casting shadows onto particles and geometry.*
 
 </div>
-<br/>
+
 We could imagine using a similar spatial hashing setup to the one used for our fluid simulation.
-However this time, we'll want to traverse the grid many times and in many different directions (a technique known as <a href="https://en.wikipedia.org/wiki/Ray_marching">ray marching</a>).
+However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as [ray marching](https://en.wikipedia.org/wiki/Ray_marching)).
 So spatial hashing isn't a good fit here, as the overhead of accessing each visited cell would simply kill the performance.
 
 Instead, blablabla...
