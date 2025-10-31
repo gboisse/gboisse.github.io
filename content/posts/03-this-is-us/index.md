@@ -187,7 +187,7 @@ Instead, blablabla...
 
 ### Conclusion
 
-If you've made it this far, congrats! :slightly_smiling_face:
+If you've made it this far, congratulations! :slightly_smiling_face:
 
 If not, I hope that you nevertheless found some of the information in this post to be useful and/or inspiring.
 As for myself, I feel I am just getting started, so watch this space.
