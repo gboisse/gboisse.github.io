@@ -179,7 +179,7 @@ I named this new data structure "particle volume" although in effect, all it rea
 
 </div>
 
-We could imagine using a similar spatial hashing setup to the one used for our fluid simulation.
+We could imagine using a similar spatial hashing setup than the one used for our fluid simulation.
 However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as [ray marching](https://en.wikipedia.org/wiki/Ray_marching)).
 So spatial hashing isn't a good fit here, as the overhead of accessing each visited cell would simply kill the performance.
 
