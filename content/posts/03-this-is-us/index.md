@@ -126,8 +126,8 @@ So I went ahead and started binning the particles into tiles of 4x4x4 cells.
 The tiles themselves are sparsely allocated using... spatial hashing, again!
 A very useful technique for sure.
 
-As part of the build process, I also generate a list of all tiles in the structure.
-My initial idea was to then dispatch one 4x4x4 group per tile for the solver, but due to the vastly varying number of particles in each tile, the performance was terrible...
+As part of the build process, I also generate a list of all the tiles in the structure.
+My initial idea was to then dispatch one 4x4x4 group per tile for the solver, but due to the vastly varying number of particles in each cell, the performance was terrible...
 
 <div style="text-align: center;">
 
@@ -136,12 +136,12 @@ My initial idea was to then dispatch one 4x4x4 group per tile for the solver, bu
 
 </div>
 
-So instead, I divide each tile into a list of subtiles; for instance a tile with 150 particles in it gets broken into two subtiles of 64 particles and one subtile of 22, or three subtiles in total.
+So instead, I divide each tile into a list of subtiles; for instance a tile with 150 particles in it gets broken down into two subtiles of 64 particles and one subtile of 22, or three subtiles in total.
 All that's needed for addressing the subtiles is the tile index and corresponding subtile index (all packed into a single 32-bit integer in my case).
 I can now dispatch over all subtiles and go much more wide and even across the device. :slightly_smiling_face:
 
 At the start of the shader, we then begin with performing the pre-fetching of the neighboring particle lists into a 6x6x6 multidimensional LDS array as well as picking the particles linearly based on the subtile index.
-From that point on, SPH can run pretty much unchanged from a regular implementation processing one particle per lane, but with much better performance.
+From that point on, SPH can run pretty much unmodified from a regular implementation processing one particle per lane, but with much better performance.
 
 The final step on the fluid journey was meshing, that is, generating a list of triangles modelling the isosurface implicitly represented by the particles.
 For this purpose, my plan was to use the [Marching cubes](https://en.wikipedia.org/wiki/Marching_cubes) algorithm.
@@ -154,12 +154,12 @@ But in order to run the algorithm, we must first derive a field from our set of 
 
 </div>
 
-Use the same data structure.
-Subdivide each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a tweakable option of the algorithm).
-Compute the field value (and its derivatives!) for each of these new subcells.
-Do not forget to dilate the tiles.
+I ended up using the exact same data structure that the one used for the SPH simulation, but this time I subdivide each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a tweakable option of the algorithm).
+For each of the subcells, all we need to do is compute the field value using a routine very similar to the SPH density pass (I actually use the same [Poly6](https://rlguy.com/sphfluidsim/#MJXc-Node-10) smoothing kernel) as well as the partial derivatives in all X, Y, and Z directions (these can be used to derive smooth normals at each generated vertex).
+One additional thing to perform however is a dilation of the data structure by at least a cell, as the resulting surface may generate triangles outside the regions directly occupied by the particles.
+This is done efficiently as a pre-pass to the field estimation.
 
-Finally, a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluidlike.
+Finally, Marching cubes is run over the computed field and a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluidlike.
 
 ### Miscellaneous
 
@@ -182,9 +182,9 @@ blablabla
 
 ### Conclusion
 
-If you've made it all the way, congrats! :slightly_smiling_face:
+If you've made it this far, congrats! :slightly_smiling_face:
 
-Regardless, I hope that you've found some of the information in this post to be interesting and/or inspiring.
+If not, I hope that you nevertheless found some of the information in this post to be useful and/or inspiring.
 As for myself, I feel I'm just getting started, so watch this space.
 
 </div>
