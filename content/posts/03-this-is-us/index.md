@@ -155,7 +155,7 @@ But in order to run the algorithm, we must first derive a field from our set of 
 </div>
 
 I ended up using the exact same data structure that the one used for the SPH simulation, but this time I subdivide each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a tweakable option of the algorithm).
-For each of the subcells, all we need to do is compute the field value using a routine very similar to the SPH density pass (I actually use the same [Poly6](https://rlguy.com/sphfluidsim/#MJXc-Node-10) smoothing kernel) as well as the partial derivatives in all X, Y, and Z directions (these can be used to derive smooth normals at each generated vertex).
+For each of the subcells, all we need to do is compute the field value using a routine very similar to the SPH density pass (although running at the subcell level) as well as the partial derivatives in all X, Y, and Z directions (these can be used to derive smooth normals at each generated vertex).
 One additional thing to perform however is a dilation of the data structure by at least a cell, as the resulting surface may generate triangles outside the regions directly occupied by the particles.
 This is done efficiently as a pre-pass to the field estimation.
 
