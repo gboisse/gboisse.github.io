@@ -183,11 +183,20 @@ We could imagine using a similar spatial hashing setup than the one used for our
 However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as [ray marching](https://en.wikipedia.org/wiki/Ray_marching)).
 So spatial hashing isn't a good fit here, as the overhead of accessing each visited cell would simply kill the performance.
 
-Instead, blablabla...
+Instead, the data struture here should encompass the whole particle system's bounding box; we'd then advance the ray to the intersected edge of the box (if the ray started outside of the volume that is) and simply march through the cells from that point on, accumulating the amount of "matter" encountered on the way to derive the final opacity value.
+
+As for the data structure itself, I decided to still go with a sparse approach, again using tiles made of 4x4x4 cells.
+The buffer storing the tiles is allocated accounting for the worst-case scenario but only needs allocating one integer per tile, which is itself used as a pointer to the underlying (sparse) cell storage.
+Once the tile allocation has happened, I atomically increment a counter for the cell that each particle falls in.
+This alone would result in fairly aliased shadows and lighting, so the build finishes with a separated 3-dimensional blur pass, using the tile size as radius, making it pretty cheap (we only need to look up one tile to the left and one to the right).
+
+Finally, the data structure is traversed from each particle and towards each targeted light to achieve self-shadowing on the system itself.
+Then we can run the same process, but from every pixel inside the depth buffer, allowing particles to cast shadows onto the scene's geometry.
+We can then use our shadow maps during particle tracing to get geometry casting shadows onto the particles themselves to end up with a pretty complete and unified shadowing system. :slightly_smiling_face:
 
 ### Conclusion
 
-If you've made it this far, congratulations! :slightly_smiling_face:
+If you've made it this far, congratulations!
 
 If not, I hope that you nevertheless found some of the information in this post to be useful and/or inspiring.
 As for myself, I feel I am just getting started, so watch this space.
