@@ -185,6 +185,10 @@ So spatial hashing isn't a good fit here, as the overhead of accessing each visi
 
 Instead, the data struture here should encompass the whole particle system's bounding box; we'd then advance the ray to the intersected edge of the box (if the ray started outside of the volume that is) and simply march through the cells from that point on, accumulating the amount of "matter" encountered on the way to derive the final opacity value.
 
+As for the data structure itself, I decided to still go with a sparse approach, again using tiles made of 4x4x4 cells.
+This time though, the buffer storing the tiles is allocated fully, accounting for the worst-case scenario.
+This doesn't result in excessive amounts of memory however, as all we need is a single integer per tile; this property is in turn used as a pointer into the underlying (sparse) cell storage.
+
 <div style="text-align: center;">
 
 ![particle-volume](/particle-volume.png)
@@ -192,11 +196,8 @@ Instead, the data struture here should encompass the whole particle system's bou
 
 </div>
 
-As for the data structure itself, I decided to still go with a sparse approach, again using tiles made of 4x4x4 cells.
-The buffer storing the tiles is this time allocated accounting for the worst-case scenario (i.e., the whole volume is occupied with particles).
-This doesn't result in excessive memory use however, as we only need to allocate one integer per tile; this integer is in turn used as a pointer into the underlying (sparse) cell storage.
-Once the cells' allocation has happened, I atomically increment a counter for the cell that each particle falls in.
-This alone would result in fairly aliased shadows and lighting, so the build finishes with a separated 3-dimensional blur pass, using the tile size as radius, making it pretty cheap (we only need to look up one tile to the left and one to the right).
+Once the cells' allocation has happened, a per-cell counter is atomically incremented for each particle that falls into it.
+This alone would result in fairly aliased shadows, so the build finishes with a 3-dimensional separated blur pass using the tile size as radius, allowing to make it pretty fast (we only need to look up one tile to the left and one to the right) while smoothing out the lighting.
 
 Finally, the data structure is traversed from each particle and towards each targeted light to achieve self-shadowing on the system itself.
 Then we can run the same process, but from every pixel inside the depth buffer, allowing particles to cast shadows onto the scene's geometry.
