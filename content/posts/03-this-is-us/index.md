@@ -191,7 +191,7 @@ As for the data structure itself, I decided to still go with a sparse approach, 
 This time though, the buffer storing the tiles is allocated in full by accounting for the worst-case scenario.
 The resulting memory requirements remain modest however, as all we really need to represent a tile is a single integer value; this property is in turn used as a "pointer" into the underlying (sparse) cell storage.
 
-Once the cells' allocation has happened, a per-cell counter is atomically incremented for each particle that falls into it.
+Once the cells' allocation has completed, a per-cell counter is atomically incremented for each particle that falls into it.
 This alone would result in fairly aliased shadows, so the build finishes with a 3-dimensional separated blur pass using the tile size as radius, allowing to make it pretty fast (we only need to look up one tile to the left and one to the right) while smoothing out the lighting.
 
 <div style="text-align: center;">
@@ -203,9 +203,9 @@ This alone would result in fairly aliased shadows, so the build finishes with a 
 </div>
 <br/>
 Finally, the data structure is traversed, starting from each particle and towards every targeted light to achieve self-shadowing on the system itself.
-Then we can run the same process, but starting from every pixel inside the depth buffer, allowing particles to cast shadows onto the scene's geometry.
+Then we run the same process, but starting from every pixel inside the depth buffer, allowing particles to cast shadows onto the scene's geometry.
 Additionally, we can further use our shadow maps during particle tracing to get geometry casting shadows back onto the particles themselves.
-We end up with a pretty complete and unified shadowing system. &#128578;
+We then end up with a pretty complete and unified shadowing system. &#128578;
 
 ### Conclusion
 
