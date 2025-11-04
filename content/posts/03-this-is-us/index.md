@@ -39,13 +39,13 @@ Specifically, the ray count really should be kept as low as possible, so that th
 </div>
 
 ... which is a bit of a challenge when tackling path tracing.
-In short, path tracing requires you to perform a random choice every time you hit a surface, explore the direction resulting from that random choice (using ray tracing), only to then repeat these same steps on the next hit.
-Not only does this typically equate to lots of expensive rays being cast, but the end result is also generally unusably noisy. :confused:
+In short, path tracing requires you to make a random choice every time you hit a surface, explore the direction resulting from that random choice (using ray tracing), only to then repeat these same steps on the next hit.
+Not only does this typically equate to lots of expensive rays being cast, but the result is also generally unusably noisy. :confused:
 
 Enters radiance caching.
 
 The idea behind radiance caching is to terminate the paths early into a data structure that approximates the scene's lighting.
-Not only is the performance improved due to the traces being shallower, the noise is also greatly reduced thanks to the filtering offered by the data structure.
+Not only is the performance improved due to the traces being shallower, but the noise is also greatly reduced thanks to the filtering offered by the data structure.
 
 <div style="text-align: center;">
 
@@ -55,7 +55,7 @@ Not only is the performance improved due to the traces being shallower, the nois
 
 </div>
 <br/>
-Here, we'll be using spatial hashing to generate the structure and the update is as follows:
+Here, we'll be using spatial hashing to generate the structure, and the update is as follows:
 
 1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
@@ -63,10 +63,10 @@ Here, we'll be using spatial hashing to generate the structure and the update is
    1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as for spawning a "bounce ray" (using cosine-weighted sampling for instance).
    1. Whatever the bounce ray hits, check whether a cell exists; if so, use its radiance as contribution, if not, do nothing.
 
-A great property of this approach is that we only trace one "bounce ray" per affected cell, while still getting a fairly decent approximation of "infinite" multiple bounces (temporally recurrent, in fact).
+A great property of this approach is that we only trace one "bounce ray" per affected cell, while still getting a decent approximation of "infinite" multiple bounces (temporally recurrent, in fact).
 This turns out to be a great knob for balancing quality vs. performance.
 Indeed, using smaller cells, we achieve greater fidelity but at higher cost.
-Conversely with larger cells, we introduce more bias but our path tracer now runs much faster.
+Conversely with larger cells, we introduce more bias, but our path tracer now runs much faster.
 This property can easily be tweaked on a per-scene basis to obtain the best possible results. :slightly_smiling_face:
 
 Still, the image remains fairly noisy.
@@ -86,7 +86,7 @@ Covering the depths and details of ReSTIR would make for a post of its own, so s
 
 A cool trick for this was proposed by the folks over at [Traverse Research](https://blog.traverseresearch.nl/dynamic-diffuse-global-illumination-b56dc0525a0a).
 They pointed out that one could simply retrieve an AO mask (short for "Ambient Occlusion") from the initial ray trace.
-This mask wouldn't be applied to the lighting directly, as is usually the case with AO, but rather used for weighting the validity of combining reservoirs.
+This mask wouldn't be applied to the lighting directly, as is usually the case with AO, but rather used for weighing the validity of combining reservoirs.
 If the reservoirs' AO values match closely, the probability of combining them increases, otherwise, it is reduced.
 This greatly improves preservation of contact shadows and details, at no additional ray tracing cost. :slightly_smiling_face:
 
@@ -122,7 +122,7 @@ The idea is to pre-fetch the neighboring data efficiently into LDS (short for "L
 We can then synchronize the group and go at performing our computations with all the neighboring cells' information close by and ready for fast access. :slightly_smiling_face:
 
 In my scenario however, I was interested in dealing with particles and implementing [smoothed-particle hydrodynamics](https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics), or SPH for short.
-So I went ahead and started binning the particles into tiles of 4x4x4 cells.
+So, I went ahead and started binning the particles into tiles of 4x4x4 cells.
 The tiles themselves are sparsely allocated using... spatial hashing, again!
 A very useful technique for sure.
 
@@ -136,7 +136,7 @@ My initial idea was to then dispatch one 4x4x4 group per tile for the solver, bu
 
 </div>
 
-So instead, I divide each tile into a list of subtiles; for instance a tile with 150 particles in it gets broken down into two subtiles of 64 particles and one subtile of 22, or three subtiles in total.
+So instead, I divide each tile into a list of subtiles; for instance, a tile with 150 particles in it gets broken down into two subtiles of 64 particles and one subtile of 22, or three subtiles in total.
 All that's needed for addressing the subtiles is the tile index and corresponding subtile index (all packed into a single 32-bit integer in my case).
 I can now dispatch over all subtiles and go much more wide and even across the device. :slightly_smiling_face:
 
@@ -154,17 +154,17 @@ But in order to run the algorithm, we must first derive a field from our set of 
 
 </div>
 
-I ended up using the exact same data structure that the one used for the SPH simulation, but this time I subdivide each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a tweakable option of the algorithm).
+I ended up using the exact same data structure that the one used for the SPH simulation, but this time I subdivided each cell further into either a 2x2x2 or 4x4x4 subdivision (left as a tweakable option of the algorithm).
 For each of the subcells, all we need to do is compute the field value using a routine very similar to the SPH density pass (although running at the subcell level) as well as the partial derivatives in all X, Y, and Z directions (these can be used to derive smooth normals at each generated vertex).
-One additional thing to perform however is a dilation of the data structure by at least a cell, as the resulting surface may generate triangles outside the regions directly occupied by the particles.
+One additional thing to perform however is a dilation of the data structure by at least one cell, as the resulting surface may generate triangles outside the regions directly occupied by the particles.
 This is done efficiently as a pre-pass to estimating the field.
 
-Finally, Marching cubes is run over the computed field and a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluidlike.
+Finally, Marching cubes is run over the computed field, and a bit of smoothing is applied by simply moving the vertices by a small amount in the opposite of the normal direction, which helps the resulting mesh look sharper and slightly more fluidlike.
 
 ### One last thing
 
-This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadows rather) are computed for the particles.
-A commonly-used technique for shadowing particle systems is known as [Deep Opacity Maps](https://www.cemyuksel.com/research/deepopacity/).
+This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadows rather) is computed for the particles.
+A commonly used technique for shadowing particle systems is known as [Deep Opacity Maps](https://www.cemyuksel.com/research/deepopacity/).
 These essentially extend traditional shadow maps with depth slices to handle the volumetric nature of the shadowing (required due to our particles being slightly transparent rather than fully opaque).
 
 In my case however, I want to be able to handle multiple light sources, which would require drawing multiple deep opacity maps (once for each light effectively), and envision eventually connecting the particles' lighting system to the path tracer described earlier.
@@ -181,11 +181,11 @@ I named this new data structure "particle volume" although in effect, all it rea
 
 </div>
 <br/>
-We could imagine using a similar spatial hashing setup than the one used for our fluid simulation.
+We could imagine using a similar spatial hashing setup to the one used for our fluid simulation.
 However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as <a href="https://en.wikipedia.org/wiki/Ray_marching">ray marching</a>).
 So spatial hashing isn't a good fit here, as the overhead of accessing each visited cell would simply kill the performance.
 
-Instead, the data struture here should encompass the whole particle system's bounding box; we'd then advance the ray to the intersected edge of the box (if the ray started outside of the volume that is) and simply march through the cells from that point on, accumulating the amount of "matter" encountered on the way to derive the final opacity value.
+Instead, the data structure here should encompass the whole particle system's bounding box; we'd then advance the ray to the intersected edge of the box (if the ray started outside of the volume that is) and simply march through the cells from that point on, accumulating the amount of "matter" encountered on the way to derive the final opacity value.
 
 As for the data structure itself, I decided to still go with a sparse approach, again using tiles made of 4x4x4 cells.
 This time though, the buffer storing the tiles is allocated fully, accounting for the worst-case scenario.
