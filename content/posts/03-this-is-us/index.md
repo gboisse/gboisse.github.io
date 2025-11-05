@@ -1,10 +1,9 @@
 ---
 slug: this-is-us
 title: Coding "This is Us"
-date: 2025-10-27
+date: 2025-11-05
 author: Guillaume Boissé
 description: Behind the scenes of a modern PC demo.
-draft: true
 ---
 
 <div style="text-align: justify">
