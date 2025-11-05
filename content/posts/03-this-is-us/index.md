@@ -54,14 +54,50 @@ Not only is the performance improved due to the traces being shallower, but the 
 <em>Test renders without and with radiance caching.</em>
 
 </div>
-<br/>
+
 Here, we'll be using spatial hashing to generate the structure, and the update is as follows:
 
 1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
-   1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value. (If the cell was already estimated this frame, we can exit here, without adding to the list.)
+   1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value. (If the cell was already estimated this frame, we can exit here, without adding it to the list.)
    1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as for spawning a "bounce ray" (using cosine-weighted sampling for instance).
    1. Whatever the bounce ray hits, check whether a cell exists; if so, use its radiance as contribution, if not, do nothing.
+
+<div style="font-size: 12px;">
+
+```hlsl
+uint SpatialHash_FindOrInsert(float3 position, float3 normal, float hitDistance)
+{
+    // Inputs to hashing
+    int3 p = floor(position / g_CellSize); // cell size can be made adaptive for LOD support
+    int3 n = clamp(floor((0.5 * normal + 0.5) * 4.0), 0.0, 3.0);
+    int  b = (hitDistance < g_CellSize ? 1 : 0); // light leak heuristic
+
+    // https://www.shadertoy.com/view/XlGcRh
+    uint bucketIndex = pcg(p.x + pcg(p.y + pcg(p.z + pcg(n.x + pcg(n.y + pcg(n.z + pcg(b)))))));
+    bucketIndex %= g_BucketCount; // map to cell bucket
+    uint checksum = xxhash32(p.x + xxhash32(p.y + xxhash32(p.z + xxhash32(n.x + xxhash32(n.y + xxhash32(n.z + xxhash32(b)))))));
+    checksum = max(checksum, 1); // 0 is reserved for available cells
+
+    // Update data structure
+    for(uint i = 0; i < g_BucketSize; i++)
+    {
+        uint cellIndex = i + bucketIndex * g_BucketSize;
+        uint cmp       = atomicCompSwap(hash[cellIndex], 0, checksum);
+
+        if(cmp == 0)
+            return cellIndex; // inserted a new cell
+        if(cmp == checksum)
+            return cellIndex; // found an existing cell
+    }
+
+    return 0xFFFFFFFFu; // out of memory :'(
+}
+```
+
+</div>
+
+<center><em>A simple spatial hashing with linear probing setup.</em></center>
 
 A great property of this approach is that we only trace one "bounce ray" per affected cell, while still getting a decent approximation of "infinite" multiple bounces (temporally recurrent, in fact).
 This turns out to be a great knob for balancing quality vs. performance.
@@ -81,7 +117,7 @@ And specifically, the "GI" [variant](https://research.nvidia.com/publication/202
 <em>Test renders without and with ReSTIR.</em>
 
 </div>
-<br/>
+
 Covering the depths and details of ReSTIR would make for a post of its own, so suffice to say that the approach chosen here, unsurprisingly, aims at minimizing the number of rays being cast.
 
 A cool trick for this was proposed by the folks over at [Traverse Research](https://blog.traverseresearch.nl/dynamic-diffuse-global-illumination-b56dc0525a0a).
@@ -101,9 +137,9 @@ The number of accumulated temporal samples is stored in the alpha channel and is
 <em>Denoised diffuse and specular signals.</em>
 
 </div>
-<br/>
+
 A quick word on specular; it uses about the same data flow than diffuse but with a few additional dedicated heuristics.
-Specifically, "BRDF-based ratio estimator" by <a href="https://www.youtube.com/watch?v=YwV4GOBdFXo">Tomasz Stachowiak</a> is used for upscaling the signal (the path tracer typically renders at ¼ spp, or even ⅛ spp at times...), while "dual-source reprojection" (by the same author) ensures that smooth surfaces are reprojected (more or less) correctly.
+Specifically, "BRDF-based ratio estimator" by [Tomasz Stachowiak](https://www.youtube.com/watch?v=YwV4GOBdFXo) is used for upscaling the signal (the path tracer typically renders at ¼ spp, or even ⅛ spp at times...), while "dual-source reprojection" (by the same author) ensures that smooth surfaces are reprojected (more or less) correctly.
 
 <div style="text-align: center;">
 
@@ -180,9 +216,9 @@ I named this new data structure "particle volume" although in effect, all it rea
 <em>From left to right: no lighting, particle volume, shadowed particles.</em>
 
 </div>
-<br/>
+
 We could imagine using a similar spatial hashing setup to the one used for our fluid simulation.
-However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as <a href="https://en.wikipedia.org/wiki/Ray_marching">ray marching</a>).
+However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as [ray marching](https://en.wikipedia.org/wiki/Ray_marching)).
 So spatial hashing isn't a good fit here, as the overhead of accessing each visited cell would simply kill the performance.
 
 Instead, the new data structure should encompass the whole particle system's bounding box (estimated dynamically using 6 min/max parallel reductions); we'd then advance the ray to the intersected edge of the box (if the ray started outside of the volume that is) and simply march through the cells from that point on, accumulating the amount of "matter" encountered on the way to derive the final opacity value.
@@ -201,11 +237,11 @@ This alone would result in fairly aliased shadows, so the build finishes with a 
 <em>Without vs. with blurring the density field.</em>
 
 </div>
-<br/>
+
 Finally, the data structure is traversed, starting from each particle and towards every targeted light to achieve self-shadowing on the system itself.
 Then we run the same process, but starting from every pixel inside the depth buffer, allowing particles to cast shadows onto the scene's geometry.
 Additionally, we can further use our shadow maps during particle tracing to get geometry casting shadows back onto the particles themselves.
-We then end up with a pretty complete and unified shadowing system. &#128578;
+We then end up with a pretty complete and unified shadowing system. :slightly_smiling_face:
 
 ### Conclusion
 
