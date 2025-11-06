@@ -167,7 +167,7 @@ My initial idea was to then dispatch one 4x4x4 group per tile for the solver, bu
 <div style="text-align: center;">
 
 ![tiled-sph](/tiled-sph.gif)
-*Some early test of the tiled SPH approach using ½ million particles.*
+*Some early test of the tiled SPH approach using ½&nbsp;million particles.*
 
 </div>
 
