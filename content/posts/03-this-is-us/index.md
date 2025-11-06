@@ -138,7 +138,7 @@ The number of accumulated temporal samples is stored in the alpha channel and is
 </div>
 
 A quick word on specular; it uses about the same data flow than diffuse but with a few additional dedicated heuristics.
-Specifically, "BRDF-based ratio estimator" by [Tomasz Stachowiak](https://www.youtube.com/watch?v=YwV4GOBdFXo) is used for upscaling the signal (the path tracer typically renders at ¼ spp, or even ⅛ spp at times...), while "dual-source reprojection" (by the same author) ensures that smooth surfaces are reprojected (more or less) correctly.
+Specifically, "BRDF-based ratio estimator" by [Tomasz Stachowiak](https://www.youtube.com/watch?v=YwV4GOBdFXo) is used for upscaling the signal (the path tracer typically renders at ¼&nbsp;spp, or even ⅛&nbsp;spp at times...), while "dual-source reprojection" (by the same author) ensures that smooth surfaces are reprojected (more or less) correctly.
 
 <div style="text-align: center;">
 
