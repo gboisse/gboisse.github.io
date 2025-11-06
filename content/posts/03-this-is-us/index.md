@@ -58,18 +58,18 @@ Here, we'll be using spatial hashing to generate the structure, and the update i
 
 1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
-   1. Hash the position and ray direction for the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value. (If the cell was already estimated this frame, we can exit here, without adding it to the list.)
+   1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value. (If the cell was already estimated this frame, we can exit here, without adding it to the list.)
    1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as for spawning a "bounce ray" (using cosine-weighted sampling for instance).
    1. Whatever the bounce ray hits, check whether a cell exists; if so, use its radiance as contribution, if not, do nothing.
 
 <div style="font-size: 12px;">
 
 ```hlsl
-uint SpatialHash_FindOrInsert(float3 position, float3 rayDirection, float hitDistance)
+uint SpatialHash_FindOrInsert(float3 position, float3 normal, float hitDistance)
 {
     // Inputs to hashing
     int3 p = floor(position / g_CellSize); // cell size can be made adaptive for LOD support
-    int3 n = clamp(floor((0.5 * rayDirection + 0.5) * 4.0), 0.0, 3.0);
+    int3 n = clamp(floor((0.5 * normal + 0.5) * 4.0), 0.0, 3.0);
     int  b = (hitDistance < g_CellSize ? 1 : 0); // light leak heuristic
 
     // https://www.shadertoy.com/view/XlGcRh
