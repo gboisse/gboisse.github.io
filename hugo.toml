@@ -99,6 +99,10 @@ url = "https://mastodon.gamedev.place/@gboisse"
 name = "github"
 url = "https://github.com/gboisse"
 
+[[params.socialIcons]]
+name = "Rss"
+url = "/index.xml"
+
 [tableOfContents]
 startLevel = 2 # ToC starts from H2
 endLevel = 4 # ToC ends at H4
