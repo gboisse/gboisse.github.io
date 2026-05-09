@@ -22,7 +22,7 @@ Shortly after this, we had a nice storyboard. :slightly_smiling_face:
 
 </div>
 
-Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there was lots to do on that front!).
+Pretty soon afterwards, we got joined by Miguel, a.k.a., [BevelledApe](https://www.pouet.net/user.php?who=106515), who was willing to handle the modelling and texturing side of things (and there was a lot to do on that front!).
 
 From this point on, everybody started working on advancing bits and pieces on the designing, modelling and programming sides of things but, without proper focus and collaboration, not much was really happening.
 
