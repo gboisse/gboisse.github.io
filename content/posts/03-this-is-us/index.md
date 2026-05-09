@@ -240,7 +240,7 @@ This alone would result in fairly aliased shadows, so the build finishes with a 
 Finally, the data structure is traversed, starting from each particle and towards every targeted light to achieve self-shadowing on the system itself.
 Then we run the same process, but starting from every pixel inside the depth buffer, allowing for particles to cast shadows onto the scene's geometry.
 Additionally, we can further use our shadow maps during particle tracing to get geometry casting shadows back onto the particles themselves.
-We then end up with a pretty complete and unified shadowing system. :slightly_smiling_face:
+We then end up with a complete and unified shadowing system. :slightly_smiling_face:
 
 ### Conclusion
 
