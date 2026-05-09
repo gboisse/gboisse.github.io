@@ -46,7 +46,7 @@ Node systems were still appealing to me however for different reasons;
 they felt more intuitive and less intimidating than other solutions with more "traditional" UI and they tend to look really nice on screenshots.
 Then maybe it'll be easier for me to convince other people to get on board? :slightly_smiling_face:
 
-So I started thinking about a node system that would **not** be "coding with nodes".
+So, I started thinking about a node system that would **not** be "coding with nodes".
 
 ### Node system
 
@@ -54,7 +54,7 @@ Having little to no experience with node-based systems, I went ahead and looked 
 Big sources of inspiration for me would be software such as [Blender](https://www.blender.org/), [Notch](https://www.notch.one/), and [Godot](https://godotengine.org/).
 In particular, I was wondering how to create a system that'd be both easy to use and expressive enough to allow the creation of interesting and emergent effects rather than simply ticking available engine features on or off...
 
-Towards the end of 2019, something somewhat cliked in my mind;
+Towards the end of 2019, something somewhat clicked in my mind;
 I'd design the system to have only two types of nodes (okay, three) and they'd work like this:
 - The **root node** from which the graph traversal would start at runtime.
 - The **data node** representing a piece of data of a given type.
@@ -68,7 +68,7 @@ I'd design the system to have only two types of nodes (okay, three) and they'd w
 </div>
 
 \
-This seemingly simple setup seemed to open up a lot of possibilities. :slightly_smiling_face:
+This seemingly simple setup seemed to open a lot of possibilities. :slightly_smiling_face:
 
 I could have some "geometry data node" being nothing more than an index and a vertex buffer (plus some bounding box and probably other things...) while a "component node" connected to it would act as some kind of vertex shader that could be used for displacement purposes.
 
@@ -98,7 +98,7 @@ The great thing about this approach is that the dependent nodes do not need to k
 ### Data model vs. GUI code
 
 Now that I knew how my node system would operate, I had to find how to implement it.
-My plan was to use [Dear ImGui](https://github.com/ocornut/imgui) for the UI because it's a joy to use and, I have to admit, I had little intention of investigating other GUI solutions.
+My plan was to use [Dear ImGui](https://github.com/ocornut/imgui) for the UI because it's a joy to use and, I must admit, I had little intention of investigating other GUI solutions.
 ImGui is actually a great fit I found to crafting such a creative UI system.
 
 The main insight to take away in my opinion is the need to separate the data (what I'd call the **data model**) from the UI logic (often referred to as the **[view](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)**).
@@ -134,7 +134,7 @@ Having such a clearly defined data model makes it easy to serialize and deserial
 Finally, such a setup makes it rather simple to implement dreaded (but oh so useful!) features such as undo/redo.
 I picked the same approach than [@voxagonlabs](https://blog.voxagon.se/2018/07/10/undo-for-lazy-programmers.html) and went ahead with serializing the whole project on every change to the data model.
 This may sound rather inefficient (and I'm sure it won't hold up past certain project sizes...) but there isn't really all that much data you typically have to serialize when saving a project.
-So it's definitely good enough for now and makes undo/redo indeed trivial to manage. :slightly_smiling_face:
+So, it's definitely good enough for now and makes undo/redo indeed trivial to manage. :slightly_smiling_face:
 
 ### Animating the scene
 
