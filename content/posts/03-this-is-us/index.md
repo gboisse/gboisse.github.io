@@ -217,7 +217,7 @@ I named this new data structure "particle volume" although in effect, all it rea
 </div>
 
 We could imagine using a similar spatial hashing setup to the one used for our fluid simulation.
-However this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as [ray marching](https://en.wikipedia.org/wiki/Ray_marching)).
+However, this time, we'll want to traverse the grid cells many times and in many different directions (a technique known as [ray marching](https://en.wikipedia.org/wiki/Ray_marching)).
 So spatial hashing isn't a good fit here, as the overhead of accessing each visited cell would simply kill the performance.
 
 Instead, the new data structure should encompass the whole particle system's bounding box (estimated dynamically using 6 min/max parallel reductions); we'd then advance the ray to the intersected edge of the box (if the ray started outside of the volume that is) and simply march through the cells from that point on, accumulating the amount of "matter" encountered on the way to derive the final opacity value.
