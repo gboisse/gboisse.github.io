@@ -198,7 +198,7 @@ Finally, Marching cubes is run over the computed field, and a bit of smoothing i
 
 ### One last thing
 
-This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadows rather) is computed for the particles.
+This post is pretty long already but I thought I'd still briefly mention how the lighting (or shadowing rather) is computed for the particles.
 A commonly used technique for shadowing particle systems is known as [Deep Opacity Maps](https://www.cemyuksel.com/research/deepopacity/).
 These essentially extend traditional shadow maps with depth slices to handle the volumetric nature of the shadowing (required due to our particles being slightly transparent rather than fully opaque).
 
