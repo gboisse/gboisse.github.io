@@ -121,7 +121,7 @@ Covering the depths and details of ReSTIR would make for a post of its own, so s
 
 A cool trick for this was proposed by the folks over at [Traverse Research](https://blog.traverseresearch.nl/dynamic-diffuse-global-illumination-b56dc0525a0a).
 They pointed out that one could simply retrieve an AO mask (short for "Ambient Occlusion") from the initial ray trace.
-This mask wouldn't be applied to the lighting directly, as is usually the case with AO, but rather used for weighing the validity of combining reservoirs.
+This mask wouldn't be applied to the lighting directly, as is usually the case with AO, but rather used for weighting the validity of combining reservoirs.
 If the reservoirs' AO values match closely, the probability of combining them increases, otherwise, it is reduced.
 This greatly improves preservation of contact shadows and details, at no additional ray tracing cost. :slightly_smiling_face:
 
