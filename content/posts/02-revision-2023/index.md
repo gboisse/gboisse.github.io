@@ -118,7 +118,7 @@ That's when we found out that the demo was simply failing to launch...
 <div style="text-align: center;">
 
 ![reality-check-error](/reality-check-error.jpg)
-*The demo wouldn't even launch on the compo machine...*
+*The demo wouldn't even start on the compo machine...*
 
 </div>
 
