@@ -132,7 +132,7 @@ Having such a clearly defined data model makes it easy to serialize and deserial
 
 \
 Finally, such a setup makes it rather simple to implement dreaded (but oh so useful!) features such as undo/redo.
-I picked the same approach than [@voxagonlabs](https://blog.voxagon.se/2018/07/10/undo-for-lazy-programmers.html) and went ahead with serializing the whole project on every change to the data model.
+I picked the same approach as [@voxagonlabs](https://blog.voxagon.se/2018/07/10/undo-for-lazy-programmers.html) and went ahead with serializing the whole project on every change to the data model.
 This may sound rather inefficient (and I'm sure it won't hold up past certain project sizes...) but there isn't really all that much data you typically have to serialize when saving a project.
 So, it's definitely good enough for now and makes undo/redo indeed trivial to manage. :slightly_smiling_face:
 
