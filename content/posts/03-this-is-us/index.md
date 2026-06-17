@@ -78,7 +78,16 @@ uint SpatialHash_FindOrInsert(float3 position, float3 normal, float hitDistance)
     uint checksum = xxhash32(p.x + xxhash32(p.y + xxhash32(p.z + xxhash32(n.x + xxhash32(n.y + xxhash32(n.z + xxhash32(b)))))));
     checksum = max(checksum, 1); // 0 is reserved for available cells
 
-    // Update data structure
+    // Check whether a cell exists
+    for(uint i = 0; i < g_BucketSize; i++)
+    {
+        uint cellIndex = i + bucketIndex * g_BucketSize;
+
+        if(hash[cellIndex] == checksum)
+            return cellIndex; // found an existing cell
+    }
+
+    // Otherwise, insert it (note that eviction isn't safe during find/insert operations)
     for(uint i = 0; i < g_BucketSize; i++)
     {
         uint cellIndex = i + bucketIndex * g_BucketSize;
@@ -87,7 +96,7 @@ uint SpatialHash_FindOrInsert(float3 position, float3 normal, float hitDistance)
         if(cmp == 0)
             return cellIndex; // inserted a new cell
         if(cmp == checksum)
-            return cellIndex; // found an existing cell
+            return cellIndex; // found an inserted cell
     }
 
     return 0xFFFFFFFFu; // out of memory :'(
