@@ -1,5 +1,115 @@
 # Changelog
 
+## [2.1.1](https://github.com/hugo-sid/hugo-blog-awesome/compare/v2.1.0...v2.1.1) (2026-08-29)
+
+
+### :bug: Bug Fixes
+
+* star history chart ([#377](https://github.com/hugo-sid/hugo-blog-awesome/issues/377)) ([2ee223b](https://github.com/hugo-sid/hugo-blog-awesome/commit/2ee223b11a504a83d342d97edf152937af7058c1))
+
+
+### :hammer: Housekeeping
+
+* **deps:** implement centralized version management via mise ([#378](https://github.com/hugo-sid/hugo-blog-awesome/issues/378)) ([072c53d](https://github.com/hugo-sid/hugo-blog-awesome/commit/072c53dcae586ebd8bff029667c7a38ffe936b82))
+* **deps:** update `renovate.json` with packageRules for Node version ([594fe91](https://github.com/hugo-sid/hugo-blog-awesome/commit/594fe915360e36e380d18cf741ed62a52e6921bc))
+* **deps:** update actions/checkout action to v7.0.1 ([#372](https://github.com/hugo-sid/hugo-blog-awesome/issues/372)) ([b532f8b](https://github.com/hugo-sid/hugo-blog-awesome/commit/b532f8bbd5bd3905002d5e130b7e57450520a5e8))
+* **deps:** update actions/stale action to v11 ([#374](https://github.com/hugo-sid/hugo-blog-awesome/issues/374)) ([9c49243](https://github.com/hugo-sid/hugo-blog-awesome/commit/9c4924392dab0b10950323985982b5d772c1abd0))
+* **deps:** update dependency go to v1.27.0 ([#379](https://github.com/hugo-sid/hugo-blog-awesome/issues/379)) ([57b04b4](https://github.com/hugo-sid/hugo-blog-awesome/commit/57b04b4fe2b6f8cb6da55b6f1ee0ce0f9a9ef81d))
+* **deps:** update dependency hugo to v0.165.0 ([#380](https://github.com/hugo-sid/hugo-blog-awesome/issues/380)) ([45f7a19](https://github.com/hugo-sid/hugo-blog-awesome/commit/45f7a19e1e230fc2ed09d1eb42248689a258e5ce))
+* **deps:** update github/codeql-action action to v4.37.9 ([#370](https://github.com/hugo-sid/hugo-blog-awesome/issues/370)) ([b023cf7](https://github.com/hugo-sid/hugo-blog-awesome/commit/b023cf7d8915d4b24bd27ca0b958a84c717547ec))
+* **deps:** update ossf/scorecard-action action to v2.4.4 ([#373](https://github.com/hugo-sid/hugo-blog-awesome/issues/373)) ([beef65b](https://github.com/hugo-sid/hugo-blog-awesome/commit/beef65b2846f0b8765ff58689c014ffee8be055e))
+
+## [2.1.0](https://github.com/hugo-sid/hugo-blog-awesome/compare/v2.0.1...v2.1.0) (2026-07-06)
+
+
+### :sparkles: Features
+
+* add new page parameter `exclude_from_rss` ([#365](https://github.com/hugo-sid/hugo-blog-awesome/issues/365)) ([454b9b5](https://github.com/hugo-sid/hugo-blog-awesome/commit/454b9b57f2a2096c1a2646f03b09bb85b41569ab))
+
+
+### :hammer: Housekeeping
+
+* **deps:** update actions/checkout action to v7 ([#369](https://github.com/hugo-sid/hugo-blog-awesome/issues/369)) ([eb9b579](https://github.com/hugo-sid/hugo-blog-awesome/commit/eb9b57911a96ed79055812a915d9508e727e0c6a))
+
+## [2.0.1](https://github.com/hugo-sid/hugo-blog-awesome/compare/v2.0.0...v2.0.1) (2026-06-09)
+
+
+### :bug: Bug Fixes
+
+* update CONTRIBUTING.md to remove pull request reference ([#362](https://github.com/hugo-sid/hugo-blog-awesome/issues/362)) ([03e0df6](https://github.com/hugo-sid/hugo-blog-awesome/commit/03e0df6d69d24629a24d1548475c293df3f6b38f))
+* update/v2 module support ([#367](https://github.com/hugo-sid/hugo-blog-awesome/issues/367)) ([b535cc9](https://github.com/hugo-sid/hugo-blog-awesome/commit/b535cc9d1093c031c396f4416551f6d42fdc36d8))
+
+
+### :hammer: Housekeeping
+
+* **deps:** upgrade dependencies in Dockerfile, netlify.toml ([#364](https://github.com/hugo-sid/hugo-blog-awesome/issues/364)) ([2038d73](https://github.com/hugo-sid/hugo-blog-awesome/commit/2038d733b8eb6bf2d15f86f790a79c7dd691f3fd))
+
+## [2.0.0](https://github.com/hugo-sid/hugo-blog-awesome/compare/v1.21.0...v2.0.0) (2026-06-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **templates:** Hugo template upgrade for `v0.160.0` and above ([#357](https://github.com/hugo-sid/hugo-blog-awesome/issues/357))
+
+### :sparkles: Features
+
+* add SVG icon for Tangled ([#346](https://github.com/hugo-sid/hugo-blog-awesome/issues/346)) ([eb92530](https://github.com/hugo-sid/hugo-blog-awesome/commit/eb92530a751563da3396a19405bdf0494171e682))
+* **icons:** add codeberg svg icon ([#356](https://github.com/hugo-sid/hugo-blog-awesome/issues/356)) ([7931f9c](https://github.com/hugo-sid/hugo-blog-awesome/commit/7931f9cf1a9ba91fb7c1c6ff62aa3045e63af855))
+
+
+### :bug: Bug Fixes
+
+* **ci:** fix release please ci ([#360](https://github.com/hugo-sid/hugo-blog-awesome/issues/360)) ([f229b08](https://github.com/hugo-sid/hugo-blog-awesome/commit/f229b08effc2897e9464005d09b0a176b98c3a9c))
+* JSON-LD template ([#353](https://github.com/hugo-sid/hugo-blog-awesome/issues/353)) ([f4511c7](https://github.com/hugo-sid/hugo-blog-awesome/commit/f4511c763abd2eb0b78b2b9ae80132643a5fe1a0))
+* replace removed hugo methods, upgrade Hugo version ([#344](https://github.com/hugo-sid/hugo-blog-awesome/issues/344)) ([c485914](https://github.com/hugo-sid/hugo-blog-awesome/commit/c485914c4fe1e11b6f57a308234c83e5a2da98b4))
+* time formatting ([#347](https://github.com/hugo-sid/hugo-blog-awesome/issues/347)) ([d4e60cd](https://github.com/hugo-sid/hugo-blog-awesome/commit/d4e60cd9f07c7a2413912a46846a31645a0dee2a))
+* use release please config file ([#359](https://github.com/hugo-sid/hugo-blog-awesome/issues/359)) ([6868145](https://github.com/hugo-sid/hugo-blog-awesome/commit/6868145e59062c327ecfbced1d6e934fa21ffbcd))
+
+
+### :hammer: Housekeeping
+
+* **deps:** replace google-github-actions/release-please-action action with googleapis/release-please-action ([#342](https://github.com/hugo-sid/hugo-blog-awesome/issues/342)) ([5720de0](https://github.com/hugo-sid/hugo-blog-awesome/commit/5720de0aa87ab2ac7d797fa448c08c84a6b30ead))
+* **deps:** update actions/checkout action to v5.0.1 ([#333](https://github.com/hugo-sid/hugo-blog-awesome/issues/333)) ([31146be](https://github.com/hugo-sid/hugo-blog-awesome/commit/31146be39bb4cfc00770b255407fd4e09d58ca4d))
+* **deps:** update actions/checkout action to v6 ([#334](https://github.com/hugo-sid/hugo-blog-awesome/issues/334)) ([615c9c2](https://github.com/hugo-sid/hugo-blog-awesome/commit/615c9c2502ecfcc5c22b8bc71844c5ae4bdace8d))
+* **deps:** update actions/stale action to v10.3.0 ([#336](https://github.com/hugo-sid/hugo-blog-awesome/issues/336)) ([145eb3d](https://github.com/hugo-sid/hugo-blog-awesome/commit/145eb3d495aaaa946b8caa11b9e3cb38b3fae173))
+* **deps:** update actions/upload-artifact action to v6 ([#337](https://github.com/hugo-sid/hugo-blog-awesome/issues/337)) ([b30bd3b](https://github.com/hugo-sid/hugo-blog-awesome/commit/b30bd3b2fd934ea9c94f74ab601389cbdff42e77))
+* **deps:** update actions/upload-artifact action to v7 ([#345](https://github.com/hugo-sid/hugo-blog-awesome/issues/345)) ([5062749](https://github.com/hugo-sid/hugo-blog-awesome/commit/5062749ddc90f9a378b6aaa6511bf45ca396fce0))
+* **deps:** update codelytv/pr-size-labeler action to v1.10.4 ([#348](https://github.com/hugo-sid/hugo-blog-awesome/issues/348)) ([f808ff8](https://github.com/hugo-sid/hugo-blog-awesome/commit/f808ff8434a48c5101cb99912c85e0312aa6d556))
+* **deps:** update github/codeql-action action to v4.36.1 ([#332](https://github.com/hugo-sid/hugo-blog-awesome/issues/332)) ([d0f8c97](https://github.com/hugo-sid/hugo-blog-awesome/commit/d0f8c978ffc22c4d4027417d57fa11a3f5771a84))
+* **deps:** update github/codeql-action action to v4.36.2 ([#358](https://github.com/hugo-sid/hugo-blog-awesome/issues/358)) ([3ae2aba](https://github.com/hugo-sid/hugo-blog-awesome/commit/3ae2abaece1f059aa66db03c20bc47513983ceee))
+* **deps:** update googleapis/release-please-action action to v5 ([#355](https://github.com/hugo-sid/hugo-blog-awesome/issues/355)) ([b011456](https://github.com/hugo-sid/hugo-blog-awesome/commit/b011456eaa3d7848caa8a854d1dd07396c9a8b4a))
+* update README.md ([#351](https://github.com/hugo-sid/hugo-blog-awesome/issues/351)) ([daf1779](https://github.com/hugo-sid/hugo-blog-awesome/commit/daf1779772a4642c9cd268d390f9dfe2261dc832))
+* update SVG for speakerdeck icon ([#339](https://github.com/hugo-sid/hugo-blog-awesome/issues/339)) ([a8ff7b8](https://github.com/hugo-sid/hugo-blog-awesome/commit/a8ff7b8d8af64ef73d4870620ed0f6f1abab3984))
+
+
+### :recycle: Refactoring
+
+* **templates:** Hugo template upgrade for `v0.160.0` and above ([#357](https://github.com/hugo-sid/hugo-blog-awesome/issues/357)) ([3ac1122](https://github.com/hugo-sid/hugo-blog-awesome/commit/3ac112226867c200ba84aa4d3e228bd895dc0bbd))
+
+## [1.21.0](https://github.com/hugo-sid/hugo-blog-awesome/compare/v1.20.0...v1.21.0) (2025-11-01)
+
+
+### :sparkles: Features
+
+* add Forgejo icon ([#303](https://github.com/hugo-sid/hugo-blog-awesome/issues/303)) ([841dff0](https://github.com/hugo-sid/hugo-blog-awesome/commit/841dff0d9c7566ea9176d4a16f03fb18f0db2219))
+* add icon for Speakerdeck ([#319](https://github.com/hugo-sid/hugo-blog-awesome/issues/319)) ([73da284](https://github.com/hugo-sid/hugo-blog-awesome/commit/73da28441d3a7276f1c239f5edd009249362a214))
+* add Japanese language ([#297](https://github.com/hugo-sid/hugo-blog-awesome/issues/297)) ([efa15fb](https://github.com/hugo-sid/hugo-blog-awesome/commit/efa15fb3fa5d3b1796ec6e0e806ebbca9f98bbcd))
+* add zulip icon, re-order icons alphabetically, update icon list in readme ([#318](https://github.com/hugo-sid/hugo-blog-awesome/issues/318)) ([664b225](https://github.com/hugo-sid/hugo-blog-awesome/commit/664b22544df9b0c67ba5d81605612b01773e597a))
+* declare support for light and dark theme in `&lt;head&gt;` ([#315](https://github.com/hugo-sid/hugo-blog-awesome/issues/315)) ([f5c6e01](https://github.com/hugo-sid/hugo-blog-awesome/commit/f5c6e01b7ccbef68f1410d6dac8412116427d0ad))
+
+
+### :hammer: Housekeeping
+
+* add Adriano's website ([#302](https://github.com/hugo-sid/hugo-blog-awesome/issues/302)) ([0744297](https://github.com/hugo-sid/hugo-blog-awesome/commit/07442970878c53caff71988b1975d725f34847de))
+* add https://tk-web.top to the list of sites using this theme ([#305](https://github.com/hugo-sid/hugo-blog-awesome/issues/305)) ([2ff8352](https://github.com/hugo-sid/hugo-blog-awesome/commit/2ff83524b22210df9b9f83638a0acbd1913ee6d4))
+* **deps:** update actions/checkout action to v5 ([#324](https://github.com/hugo-sid/hugo-blog-awesome/issues/324)) ([b4c1aaa](https://github.com/hugo-sid/hugo-blog-awesome/commit/b4c1aaa30512dc3c28f69779bc51d5f8f1b6c4c3))
+* **deps:** update actions/stale action to v10 ([#326](https://github.com/hugo-sid/hugo-blog-awesome/issues/326)) ([79497ca](https://github.com/hugo-sid/hugo-blog-awesome/commit/79497cac3820cddea475a79737ed59a0cf6774f7))
+* **deps:** update actions/upload-artifact action to v5 ([#329](https://github.com/hugo-sid/hugo-blog-awesome/issues/329)) ([3ff9930](https://github.com/hugo-sid/hugo-blog-awesome/commit/3ff99307c5df53ff5235f4511c29ef3cce97efa2))
+* **deps:** update github/codeql-action action to v3.28.16 ([#296](https://github.com/hugo-sid/hugo-blog-awesome/issues/296)) ([38f952e](https://github.com/hugo-sid/hugo-blog-awesome/commit/38f952ed340b013c19e08306a7edffe61db5053e))
+* **deps:** update github/codeql-action action to v4 ([#327](https://github.com/hugo-sid/hugo-blog-awesome/issues/327)) ([182d7bb](https://github.com/hugo-sid/hugo-blog-awesome/commit/182d7bb0a94662e82863e3c401c87c6240f672f3))
+* **README:** add `xayan.nu` to the list of websites using this theme ([#321](https://github.com/hugo-sid/hugo-blog-awesome/issues/321)) [skip ci] ([39fdcdd](https://github.com/hugo-sid/hugo-blog-awesome/commit/39fdcddfe7ddc7b94023a2f7005162a37a766c8f))
+* **README:** add danielecer.com to list of websites using theme ([#316](https://github.com/hugo-sid/hugo-blog-awesome/issues/316)) ([4719dd6](https://github.com/hugo-sid/hugo-blog-awesome/commit/4719dd658ce010c63ba223c6b2236554f1f1b6a6))
+
 ## [1.20.0](https://github.com/hugo-sid/hugo-blog-awesome/compare/v1.19.1...v1.20.0) (2025-03-22)
 
 
