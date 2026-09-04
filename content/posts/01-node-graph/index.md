@@ -183,4 +183,5 @@ Oh, and these properties are just like any other node property, so they too can 
 
 ### Conclusion
 
-I hope this overview was useful, don't hesitate to [reach out](https://twitter.com/guitio2002) or leave a comment!
+I hope this overview was useful.
+Don't hesitate to [reach out](https://twitter.com/guitio2002) if you have any question!
