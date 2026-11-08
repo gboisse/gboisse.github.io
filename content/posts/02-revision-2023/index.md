@@ -109,7 +109,6 @@ So, we went ahead and decided to add a brand-new scene to fix things. :slightly_
 
 </div>
 
-\
 At this point, the deadline was only hours away, so we decided to stop tweaking and hand in the demo as it was.
 We uploaded it to a USB stick and brought that over to the organisers so we could test on the compo machine and make sure everything was working fine.
 
