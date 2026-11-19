@@ -27,7 +27,7 @@ Arguably, this is the biggest one. :slightly_smiling_face:
 One thing to keep in mind though is that the engine used here is still based on OpenGL, which means that hardware-accelerated ray tracing isn't an option... (at least not until someone makes an extension for it, akin to the recently merged mesh shaders [extension](https://www.phoronix.com/news/OpenGL-Mesh-Shader-Added))
 Not a big issue in practice, as the engine supports since its inception (circa 2015-16) an acceleration structure for ray/triangle intersection loosely based on this [reference](https://directtovideo.wordpress.com/2013/05/08/real-time-ray-tracing-part-2/) initially, although later extended to [irregular grids](https://graphics.cg.uni-saarland.de/papers/perard-grids-preprint.pdf).
 
-So, this calls for a somewhat different thinking from the [current](https://www.youtube.com/watch?v=Tk7Zbzd-6fs) [path tracing](https://www.youtube.com/watch?v=waizZ-UZr7U) [developments](https://www.youtube.com/watch?v=3qyoaqAxe9E) that can be seen in games for instance.
+So, this calls for a somewhat different way of thinking from the [current](https://www.youtube.com/watch?v=Tk7Zbzd-6fs) [path tracing](https://www.youtube.com/watch?v=waizZ-UZr7U) [developments](https://www.youtube.com/watch?v=3qyoaqAxe9E) that can be seen in games for instance.
 Specifically, the ray count really should be kept as low as possible, so that the framerate can remain at 60Hz...
 
 <div style="text-align: center;">
@@ -56,7 +56,7 @@ Not only is the performance improved due to the traces being shallower, but the 
 
 Here, we'll be using spatial hashing to generate the structure, and the update is as follows:
 
-1. Once a frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
+1. Once per frame, go through all the cells (initially, there are none) and check whether the decay has completed; evict as required.
 1. Every time the cache is looked up, do the following:
    1. Hash the position and normal at the hit point to build a list of affected cells (these may be new cells). Make sure to reset the decay back to its original value. (If the cell was already estimated this frame, we can exit here, without adding it to the list.)
    1. Pick a hit point at random for every cell in the list; we'll use it for computing the direct lighting contribution for the cell as well as for spawning a "bounce ray" (using cosine-weighted sampling for instance).
@@ -162,7 +162,7 @@ This is an area I've been wanting to dive further into for quite some time.
 While there's still a lot more to explore for me (hopefully in some not-so-distant future production...), I'm quite happy with what we've been able to show back in April.
 
 The setup I ended up with is mostly inspired by this post from [Morten Vassvik](https://bsky.app/profile/vassvik.bsky.social/post/3lb6j2wnmtk2k).
-The idea is to pre-fetch the neighboring data efficiently into LDS (short for "Local Data Share") by having all lanes cooperate to the operation.
+The idea is to prefetch the neighboring data efficiently into LDS (short for "Local Data Share") by having all lanes cooperate in the operation.
 We can then synchronize the group and perform our computations with the neighboring cells' information close by and ready for fast access. :slightly_smiling_face:
 
 In my scenario however, I was interested in dealing with particles and implementing [smoothed-particle hydrodynamics](https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics), or SPH for short.
@@ -176,7 +176,7 @@ My initial idea was to then dispatch one 4x4x4 group per tile for the solver, bu
 <div style="text-align: center;">
 
 ![tiled-sph](/tiled-sph.gif)
-*Some early test of the tiled SPH approach using ½&nbsp;million particles.*
+*Some early tests of the tiled SPH approach using ½&nbsp;million particles.*
 
 </div>
 
@@ -184,7 +184,7 @@ So instead, I divided each tile into a list of subtiles; for instance, a tile wi
 All that's needed for addressing the subtiles is the tile index and corresponding subtile index (all packed into a single 32-bit integer in my case).
 I can now dispatch over all subtiles and go much more wide and even across the device. :slightly_smiling_face:
 
-At the start of the shader, we then begin with performing the pre-fetching of the neighboring particle lists into a 6x6x6 multidimensional LDS array as well as picking the particles linearly based on the subtile index.
+At the start of the shader, we then begin with performing the prefetching of the neighboring particle lists into a 6x6x6 multidimensional LDS array as well as picking the particles linearly based on the subtile index.
 From that point on, SPH can run pretty much unmodified from a regular implementation processing one particle per lane, but with much better performance.
 
 The final step on the fluid journey was meshing, that is, generating a list of triangles modelling the isosurface implicitly represented by the particles.
